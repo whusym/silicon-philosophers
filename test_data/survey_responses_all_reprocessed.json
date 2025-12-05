@@ -1,0 +1,20 @@
+[
+  {
+    "profile_url": "https://philpeople.org/profiles/john-doe",
+    "has_survey_responses": true,
+    "survey_responses": [
+      {
+        "raw_text": "Accept: compatibilism"
+      }
+    ]
+  },
+  {
+    "profile_url": "https://philpeople.org/profiles/jane-smith",
+    "has_survey_responses": true,
+    "survey_responses": [
+      {
+        "raw_text": "Accept: libertarianism"
+      }
+    ]
+  }
+]

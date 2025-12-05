@@ -1,0 +1,33 @@
+[
+  {
+    "name": "John Doe",
+    "url": "https://philpeople.org/profiles/john-doe",
+    "areas_of_specialization": [
+      "Philosophy of Mind",
+      "Ethics"
+    ],
+    "areas_of_interest": [
+      "Consciousness"
+    ],
+    "phd_institution": "Harvard University",
+    "phd_country": "United States",
+    "current_institution": "MIT",
+    "current_institution_country": "United States",
+    "year_of_phd_degree": 2015
+  },
+  {
+    "name": "Jane Smith",
+    "url": "https://philpeople.org/profiles/jane-smith",
+    "areas_of_specialization": [
+      "Metaphysics"
+    ],
+    "areas_of_interest": [
+      "Modal Logic"
+    ],
+    "phd_institution": "Oxford University",
+    "phd_country": "United Kingdom",
+    "current_institution": "Cambridge",
+    "current_institution_country": "United Kingdom",
+    "year_of_phd_degree": 2018
+  }
+]

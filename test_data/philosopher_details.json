@@ -1,0 +1,14 @@
+[
+  {
+    "profile_url": "https://philpeople.org/profiles/john-doe",
+    "areas_of_specialization": [
+      "Philosophy of Mind"
+    ]
+  },
+  {
+    "profile_url": "https://philpeople.org/profiles/jane-smith",
+    "areas_of_specialization": [
+      "Metaphysics"
+    ]
+  }
+]

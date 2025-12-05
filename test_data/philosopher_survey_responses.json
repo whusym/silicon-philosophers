@@ -1,0 +1,16 @@
+[
+  {
+    "philosopher": "john-doe",
+    "responses": {
+      "a priori: yes": 1.0,
+      "free will: compatibilism": 0.75
+    }
+  },
+  {
+    "philosopher": "jane-smith",
+    "responses": {
+      "a priori: yes": 0.75,
+      "free will: libertarianism": 1.0
+    }
+  }
+]
