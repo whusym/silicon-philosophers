@@ -1,6 +1,6 @@
 # Silicon Sampling of Professional Philosophers
 
-Replication code for the paper **"Silicon Sampling of Professional Philosophers: Evaluating Algorithmic Fidelity in Expert Reasoning"**
+Code for the paper **"Silicon Sampling of Professional Philosophers: Evaluating Algorithmic Fidelity in Expert Reasoning"** (for CS329H-Fall25 at Stanford University.)
 
 This repository provides a complete pipeline for:
 1. Collecting philosopher profile data from PhilPeople.org
