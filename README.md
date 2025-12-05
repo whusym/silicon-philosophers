@@ -314,3 +314,7 @@ organized_scripts/
 | `meta-llama/Llama-3.1-8B-Instruct` | 8B | Requires HF token |
 | `mistralai/Mistral-7B-Instruct-v0.2` | 7B | Strong performance |
 
+## Acknowledgments
+
+This repository benefited from using [Cursor](https://cursor.sh) and Claude code assistance. For the models, we used Composer-1 and Claude Opus 4.5 High.
+
