@@ -1,0 +1,101 @@
+question,n,mean_score,variance
+"a priori knowledge: yes",277,1.0,0.0
+"abortion: permissible",277,0.8664259927797834,0.03360202791643316
+"abstract objects: nominalism",277,0.5478339350180506,0.06021191466068892
+"aesthetic experience: sui generis",277,0.7536101083032491,0.0008894941938510863
+"aesthetic value: subjective",277,0.9034296028880866,0.014816757679625696
+"aim of philosophy: understanding",277,1.0,0.0
+"analysis of knowledge: justified true belief",277,0.25,0.0
+"analytic-synthetic distinction: yes",277,1.0,0.0
+"arguments for theism: cosmological",277,0.37274368231046934,0.01742496318210846
+"belief or credence: credence",277,0.9990974729241877,0.00022481721383049434
+"capital punishment: permissible",277,0.12003610108303249,0.015600359707542128
+"causation: counterfactual/difference-making",277,0.7626353790613718,0.0029991919613184064
+"chinese room: doesn't understand",277,1.0,0.0
+"concepts: empiricism",277,0.8438628158844765,0.014655475765355993
+"consciousness: functionalism",277,0.5045126353790613,0.06247963612193564
+"continuum hypothesis: indeterminate",277,1.0,0.0
+"cosmological fine-tuning: multiverse",277,0.73014440433213,0.00456965423764157
+"eating animals and animal products: vegetarianism",277,0.8628158844765343,0.015476547328910841
+"environmental ethics: anthropocentric",277,0.23916967509025272,0.0025902852897861303
+"epistemic justification: externalism",277,0.7644404332129964,0.003401582191870088
+"experience machine: yes",277,0.2536101083032491,0.0017920212696633606
+"extended mind: yes",277,0.9368231046931408,0.011802903726100952
+"external world: non-skeptical realism",277,1.0,0.0
+"footbridge: push",277,0.011732851985559567,0.002795553180674843
+"foundations of mathematics: set-theoretic",277,0.8158844765342961,0.01258161842328194
+"free will: compatibilism",277,1.0,0.0
+"gender categories: revise",277,1.0,0.0
+"gender: social",277,0.9963898916967509,0.0008894941938510863
+"god: atheism",277,1.0,0.0
+"grounds of intentionality: phenomenal",277,0.5180505415162455,0.06194854618201723
+"hard problem of consciousness: yes",277,1.0,0.0
+"human genetic engineering: permissible",277,0.7680505415162455,0.00418681333003167
+"hume: skeptic",277,0.8149819494584838,0.013376624222914413
+"immortality: yes",276,0.29891304347826086,0.04017997794580971
+"interlevel metaphysics: supervenience",277,1.0,0.0
+"justification: reliabilism",277,0.7138989169675091,0.01674725332012668
+"kant: two worlds",277,0.5243682310469314,0.061906189315643366
+"knowledge claims: contextualism",277,0.7554151624548736,0.0013244666293057384
+"knowledge: empiricism",277,0.7626353790613718,0.0029991919613184064
+"law: legal positivism",277,0.7319494584837545,0.010053239322811453
+"laws of nature: Humean",277,0.25,0.0
+"logic: classical",277,0.9981949458483754,0.00044800531741584016
+"material composition: restrictivism",277,0.6723826714801444,0.03278421457336861
+"meaning of life: subjective",277,0.7933212996389891,0.00895358990733621
+"mental content: externalism",277,1.0,0.0
+"meta-ethics: moral realism",277,0.9828519855595668,0.003992949210858997
+"metaontology: heavyweight realism",277,0.6768953068592057,0.031884945718046634
+"metaphilosophy: naturalism",277,0.9936823104693141,0.0015395091816653417
+"method in history of philosophy: contextual/historicist",277,0.8736462093862816,0.015623167250974209
+"method in political philosophy: ideal theory",277,0.6904332129963899,0.025783927849965464
+"mind uploading: survival",277,0.2851985559566787,0.017037234943763115
+"mind: physicalism",277,0.9792418772563177,0.010173793480952443
+"moral judgment: cognitivism",277,1.0,0.0
+"moral motivation: externalism",277,0.7870036101083032,0.00788163536602849
+"moral principles: moral generalism",277,0.8646209386281588,0.015517275085039554
+"morality: non-naturalism realism",277,0.5541516245487365,0.06024449686559189
+"newcomb's problem: one box",277,0.9981949458483754,0.00044800531741584016
+"normative concepts: reasons",277,1.0,0.0
+"normative ethics: virtue ethics",277,0.9214801444043321,0.01391585971405857
+"other minds: adult humans",277,1.0,0.0
+"ought implies can: yes",277,1.0,0.0
+"perceptual experience: representationalism",277,0.8249097472924187,0.013115966583690651
+"personal identity: psychological view",277,0.7427797833935018,0.0035579767754043454
+"philosophical knowledge: a little",277,1.0,0.0
+"philosophical methods: conceptual analysis",277,0.9638989169675091,0.007721982562003936
+"philosophical progress: a little",277,1.0,0.0
+"plato: knowledge only of forms",277,0.1552346570397112,0.014710865513691043
+"political philosophy: egalitarianism",277,0.9756317689530686,0.00549824707737622
+"politics: socialism",277,0.5117328519855595,0.01768724993157737
+"possible worlds: abstract",277,0.8925992779783394,0.015315265414641139
+"practical reason: Kantian",277,0.7481949458483754,0.002253059469040389
+"principle of sufficient reason: true",277,0.8384476534296029,0.021057879028789635
+"proper names: Fregean",277,0.2842960288808664,0.015971796843435988
+"properties: immanent universals",277,0.7536101083032491,0.0008894941938510863
+"propositional attitudes: representational",277,1.0,0.0
+"propositions: structured entities",277,0.9972924187725631,0.0006695643107560375
+"quantum mechanics: many-worlds",277,0.621841155234657,0.020127657078809837
+"race categories: revise",277,1.0,0.0
+"race: social",277,1.0,0.0
+"rational disagreement: permissivism",277,0.7635379061371841,0.0032012016317168215
+"response to external-world skepticism: epistemic externalist",277,0.9593862815884476,0.00850395547967522
+"science: scientific realism",277,1.0,0.0
+"semantic content: moderate contextualism",277,0.76985559566787,0.00456965423764157
+"sleeping beauty: one-half",277,0.9990974729241877,0.00022481721383049434
+"spacetime: substantivalism",277,0.7509025270758123,0.00022481721383049434
+"statue and lump: one thing",277,0.7509025270758123,0.00022481721383049434
+"teletransporter: survival",277,0.75,0.0
+"temporal ontology: eternalism",277,0.9909747292418772,0.0021748621772732604
+"theory of reference: causal",277,0.75,0.0
+"time travel: metaphysically possible",277,0.8447653429602888,0.014710865513691043
+"time: B-theory",277,0.9404332129963899,0.011343494636969074
+"trolley problem: switch",277,1.0,0.0
+"true contradictions: possible but non-actual",277,0.26624548736462095,0.010566409050033233
+"truth: correspondence",277,1.0,0.0
+"units of selection: organisms",277,0.8095667870036101,0.011343494636969074
+"vagueness: semantic",277,0.9891696750902527,0.0025902852897861303
+"values in science: can be either",277,1.0,0.0
+"well-being: hedonism/experientialism",277,0.25,0.0
+"wittgenstein: late",277,1.0,0.0
+"zombies: conceivable but not metaphysically possible",277,0.9864620938628159,0.0032012016317168215
