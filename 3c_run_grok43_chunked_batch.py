@@ -29,9 +29,10 @@ CHUNK_SIZE = 5000
 POLL_SECONDS = 30
 
 
-def load_eval_module():
-    path = Path(__file__).resolve().parent / "3b_eval_openrouter_grok43.py"
-    spec = importlib.util.spec_from_file_location("grok43_eval", path)
+def load_eval_module(eval_script: Optional[Path] = None):
+    # Default Grok 4.3; pass --eval-script for other models (e.g. grok-4.6).
+    path = eval_script or (Path(__file__).resolve().parent / "3b_eval_openrouter_grok43.py")
+    spec = importlib.util.spec_from_file_location("grok_eval", str(path))
     mod = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
     spec.loader.exec_module(mod)
@@ -73,10 +74,15 @@ def chunked_dir(output_dir: Path) -> Path:
     return d
 
 
-def cmd_submit(data_dir: Path, output_dir: Path, limit: Optional[int]) -> None:
+def cmd_submit(
+    data_dir: Path,
+    output_dir: Path,
+    limit: Optional[int],
+    eval_script: Optional[Path] = None,
+) -> None:
     import requests
 
-    mod = load_eval_module()
+    mod = load_eval_module(eval_script)
     api_key = mod.require_api_key()
     mapping, payload = build_all_requests(mod, data_dir, limit)
     out = chunked_dir(output_dir)
@@ -161,10 +167,10 @@ def cmd_submit(data_dir: Path, output_dir: Path, limit: Optional[int]) -> None:
     print(f"\nSaved {ids_path}")
     print("Next: python 3c_run_grok43_chunked_batch.py status --output-dir ...")
 
-def cmd_status(output_dir: Path) -> None:
+def cmd_status(output_dir: Path, eval_script: Optional[Path] = None) -> None:
     import requests
 
-    mod = load_eval_module()
+    mod = load_eval_module(eval_script)
     api_key = mod.require_api_key()
     out = chunked_dir(output_dir)
     meta_path = out / "batch_ids.json"
@@ -245,10 +251,12 @@ def score_option(parsed: List[str], position: str) -> Optional[float]:
     return mapping.get(first)
 
 
-def cmd_collect(output_dir: Path, wait: bool = True) -> None:
+def cmd_collect(
+    output_dir: Path, wait: bool = True, eval_script: Optional[Path] = None
+) -> None:
     import requests
 
-    mod = load_eval_module()
+    mod = load_eval_module(eval_script)
     api_key = mod.require_api_key()
     out = chunked_dir(output_dir)
     meta = json.load(open(out / "batch_ids.json"))
@@ -375,15 +383,21 @@ def main():
     p.add_argument("action", choices=["submit", "status", "collect"])
     p.add_argument("--data-dir", type=Path, default=Path("full_data_reconstructed"))
     p.add_argument("--output-dir", type=Path, default=Path("llm_responses_grok-4.3"))
+    p.add_argument(
+        "--eval-script",
+        type=Path,
+        default=None,
+        help="Eval module path (default: 3b_eval_openrouter_grok43.py)",
+    )
     p.add_argument("--limit", type=int, default=None)
     p.add_argument("--no-wait", action="store_true")
     args = p.parse_args()
     if args.action == "submit":
-        cmd_submit(args.data_dir, args.output_dir, args.limit)
+        cmd_submit(args.data_dir, args.output_dir, args.limit, args.eval_script)
     elif args.action == "status":
-        cmd_status(args.output_dir)
+        cmd_status(args.output_dir, args.eval_script)
     else:
-        cmd_collect(args.output_dir, wait=not args.no_wait)
+        cmd_collect(args.output_dir, wait=not args.no_wait, eval_script=args.eval_script)
 
 
 if __name__ == "__main__":
