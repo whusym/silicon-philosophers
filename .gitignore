@@ -1,5 +1,6 @@
-
 __pycache__/
 *.pyc
 llm_responses_*/
-
+.env
+.env.*
+*.log

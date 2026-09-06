@@ -56,10 +56,13 @@ MODEL_ID = "x-ai/grok-4.3"
 MODEL_LABEL = "grok-4.3"
 
 TEMPERATURE = 0.0
-MAX_TOKENS = 100
+# Grok 4.3 is a reasoning model; keep headroom even with reasoning disabled.
+MAX_TOKENS = 256
 MAX_RETRIES = 5
 SAVE_EVERY = 25
 POLL_SECONDS = 30
+# Match non-reasoning commercial evals in the paper (disable Grok thinking tokens).
+REASONING_ENABLED = False
 
 PHILOSOPHERS_FILE = "philosophers_with_countries.json"
 QUESTIONS_FILE = "question_answer_options.json"
@@ -86,14 +89,23 @@ def build_persona_prompt(persona: Dict[str, Any]) -> str:
     institution = persona.get("current_institution")
     institution_country = persona.get("current_institution_country")
 
-    prompt = "You are a professional philosopher"
-
-    if institution:
-        prompt += f" at {institution}"
-        if institution_country:
-            prompt += f" ({institution_country})"
-
-    prompt += ".\n\n"
+    # Prefer demographic persona (paper style). If demographics are missing but a
+    # name is available, condition on the name so prompts are not identical.
+    name = persona.get("name")
+    if institution or specializations or interests or phd:
+        prompt = "You are a professional philosopher"
+        if institution:
+            prompt += f" at {institution}"
+            if institution_country:
+                prompt += f" ({institution_country})"
+        prompt += ".\n\n"
+    elif name:
+        prompt = (
+            f"You are {name}, a professional philosopher. "
+            "Answer the survey as this philosopher would.\n\n"
+        )
+    else:
+        prompt = "You are a professional philosopher.\n\n"
 
     if phd or phd_country or phd_year:
         prompt += "Your Educational Background:\n"
@@ -282,6 +294,7 @@ def chat_completion(api_key: str, prompt: str) -> str:
         messages=[{"role": "user", "content": prompt}],
         temperature=TEMPERATURE,
         max_tokens=MAX_TOKENS,
+        extra_body={"reasoning": {"enabled": REASONING_ENABLED}},
     )
     return resp.choices[0].message.content or ""
 
@@ -531,6 +544,7 @@ def batch_submit(data_dir: Path, output_dir: Path, limit: Optional[int]) -> None
                     "messages": [{"role": "user", "content": prompt}],
                     "temperature": TEMPERATURE,
                     "max_tokens": MAX_TOKENS,
+                    "reasoning": {"enabled": REASONING_ENABLED},
                 }
                 f.write(
                     json.dumps(
