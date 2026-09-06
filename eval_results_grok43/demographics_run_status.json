@@ -1,0 +1,13 @@
+{
+  "persona": "full demographics from private merged_human_survey_philosophers_normalized.json",
+  "private_file_committed": false,
+  "human_responses_in_prompts": false,
+  "n_cells_target": 27700,
+  "n_cells_submitted": 25000,
+  "n_chunks_submitted": 5,
+  "n_chunks_blocked_402": 1,
+  "blocked_chunk_requests": 2700,
+  "openrouter_note": "Last 2700 blocked by $0 remaining balance after submitting 5x5000; resume when credits added.",
+  "output_dir": "/tmp/grok43_demo_full",
+  "compare_baseline": "eval_results_grok43/comparison_summary.json (name-only run)"
+}
