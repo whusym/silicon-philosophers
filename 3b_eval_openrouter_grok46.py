@@ -62,12 +62,13 @@ MODEL_LABEL = "grok-4.6"
 
 TEMPERATURE = 0.0
 # Grok 4.6 is a reasoning model; keep headroom for mandatory reasoning tokens.
-MAX_TOKENS = 1024
+MAX_TOKENS = 384
 MAX_RETRIES = 5
 SAVE_EVERY = 25
 POLL_SECONDS = 30
 # Grok 4.6 requires reasoning; OpenRouter rejects reasoning.enabled=false.
 REASONING_ENABLED = True
+REASONING_EFFORT = "low"  # cost control; mandatory reasoning still on
 
 PHILOSOPHERS_FILE = "philosophers_with_countries.json"
 QUESTIONS_FILE = "question_answer_options.json"
@@ -287,21 +288,29 @@ def openrouter_headers(api_key: str) -> Dict[str, str]:
 
 
 def chat_completion(api_key: str, prompt: str) -> str:
-    """Single sync chat completion via OpenRouter (OpenAI-compatible)."""
-    try:
-        from openai import OpenAI
-    except ImportError as exc:
-        raise SystemExit("Install openai: pip install openai") from exc
+    """Single sync chat completion via OpenRouter HTTP API."""
+    import requests
 
-    client = OpenAI(api_key=api_key, base_url=OPENROUTER_BASE_URL)
-    resp = client.chat.completions.create(
-        model=MODEL_ID,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=TEMPERATURE,
-        max_tokens=MAX_TOKENS,
-        extra_body={"reasoning": {"enabled": REASONING_ENABLED}},
+    body = {
+        "model": MODEL_ID,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": TEMPERATURE,
+        "max_tokens": MAX_TOKENS,
+        "reasoning": {"enabled": REASONING_ENABLED, "effort": REASONING_EFFORT},
+    }
+    resp = requests.post(
+        f"{OPENROUTER_BASE_URL}/chat/completions",
+        headers=openrouter_headers(api_key),
+        json=body,
+        timeout=180,
     )
-    return resp.choices[0].message.content or ""
+    if resp.status_code >= 400:
+        raise RuntimeError(f"OpenRouter {resp.status_code}: {resp.text[:400]}")
+    data = resp.json()
+    choices = data.get("choices") or []
+    if not choices:
+        raise RuntimeError(f"No choices in response: {data}")
+    return choices[0].get("message", {}).get("content") or ""
 
 
 # ---------------------------------------------------------------------------
@@ -566,7 +575,7 @@ def batch_submit(data_dir: Path, output_dir: Path, limit: Optional[int]) -> None
                     "messages": [{"role": "user", "content": prompt}],
                     "temperature": TEMPERATURE,
                     "max_tokens": MAX_TOKENS,
-                    "reasoning": {"enabled": REASONING_ENABLED},
+                    "reasoning": {"enabled": REASONING_ENABLED, "effort": REASONING_EFFORT},
                 }
                 f.write(
                     json.dumps(
