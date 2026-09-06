@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Broader Grok metrics beyond per-Q variance, using existing scored runs."""
+"""Broader Grok metrics beyond per-Q variance, using existing scored runs.
+
+Paper-facing metrics (§3.2 / paper assets) are the primary outputs.
+`quality_score_5a` is pipeline-internal only (from 5a_compute_quality_metrics.py)
+and is NOT a paper-reported headline metric.
+"""
 from __future__ import annotations
 
 import csv
@@ -12,9 +17,37 @@ import numpy as np
 
 OUT = Path(__file__).resolve().parent
 PAPER_QD = Path("/agent/repos/silicon-philosophers-paper/assets/questions_data.json")
+PAPER_DOMAIN = Path(
+    "/agent/repos/silicon-philosophers-paper/assets/domain_heterogeneity_comparison.csv"
+)
 PRIV = Path("/tmp/silicon_philosophers_private/merged_human_survey_philosophers_normalized.json")
 DEMO = Path("/tmp/grok43_demo_full/grok-4.3_scored.json")
 NAME = Path("/tmp/grok43_full/grok-4.3_scored.json")
+
+# Official paper-facing metrics (lead columns in paper_metrics_* outputs).
+PAPER_METRICS = [
+    "mean_per_q_variance",  # Per-Q Var
+    "var_ratio_vs_human",  # Human/model (higher = more collapse)
+    "avg_entropy",  # Shannon entropy
+    "pct_nonzero_variance",
+    "pct_zero_var",
+    "avg_kl_human_to_model",
+    "avg_js",
+    "mantel_r_vs_human",
+    "rv_vs_human",
+    "mean_abs_r",  # element-wise |r| of Q×Q corr structure
+]
+
+# Optional secondary (computed; not claimed as paper-table metrics).
+SECONDARY_AGREEMENT = [
+    "pearson_r",
+    "mae",
+]
+
+# Pipeline-internal only — never headline.
+PIPELINE_INTERNAL = [
+    "quality_score_5a",
+]
 
 
 def load_scored(path: Path):
@@ -94,6 +127,7 @@ def aggregate(qmets):
     pct_zero = float(100 * np.mean([m["is_zero_var"] for m in qmets]))
     pct_low = float(100 * np.mean([m["is_low_var"] for m in qmets]))
     pct_prob = float(100 * np.mean([m["is_zero_var"] or m["is_low_var"] for m in qmets]))
+    # Pipeline-internal composite from 5a — NOT a paper metric.
     quality = (
         0.30 * (avg_nent * 100)
         + 0.25 * min(avg_var / 0.25 * 100, 100)
@@ -108,10 +142,12 @@ def aggregate(qmets):
         "avg_unique_values": avg_uniq,
         "avg_concentration": avg_conc,
         "pct_zero_var": pct_zero,
+        "pct_nonzero_variance": 100.0 - pct_zero,
         "pct_low_var": pct_low,
         "pct_problematic": pct_prob,
         "pct_usable": 100 - pct_prob,
         "quality_score_5a": float(quality),
+        "quality_score_5a_note": "pipeline-internal only; not a paper metric",
     }
 
 
@@ -357,43 +393,60 @@ def main():
         results[label]["agreement_vs_private_human"] = agreement(mat, priv_mat)
         results[label]["private_human_nonnull_cells"] = int(np.sum(~np.isnan(priv_mat)))
 
-    key_metrics = [
-        "mean_per_q_variance",
-        "quality_score_5a",
-        "avg_entropy",
-        "avg_concentration",
-        "pct_zero_var",
-        "pct_usable",
-        "pearson_r",
-        "mae",
-        "exact_match_rate",
-        "within_0_25_rate",
-        "mean_per_q_pearson",
-        "avg_kl_human_to_model",
-        "avg_js",
-        "flattened_js",
-        "flattened_kl_human_to_model",
-        "rv_vs_human",
-        "mantel_r_vs_human",
-        "mean_abs_r",
-    ]
+    # Add var ratio vs human (paper figure1_stats_bc style: Human / model).
+    human_var = results["Human"]["mean_per_q_variance"]
+    for label, m in results.items():
+        v = m.get("mean_per_q_variance")
+        if v and v > 0:
+            m["var_ratio_vs_human"] = float(human_var / v)
+        else:
+            m["var_ratio_vs_human"] = None
 
+    # Compact paper-facing comparison (primary deliverable).
+    paper_fields = ["model"] + PAPER_METRICS + SECONDARY_AGREEMENT
+    paper_rows = []
+    for model, m in results.items():
+        row = {"model": model}
+        for k in PAPER_METRICS + SECONDARY_AGREEMENT:
+            row[k] = m.get(k)
+        paper_rows.append(row)
+
+    with open(OUT / "paper_metrics_comparison.csv", "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=paper_fields)
+        w.writeheader()
+        w.writerows(paper_rows)
+
+    # Broader CSV: paper metrics first; pipeline-internal quality last.
+    broader_metrics = (
+        PAPER_METRICS
+        + [
+            "avg_concentration",
+            "pct_usable",
+            "exact_match_rate",
+            "within_0_25_rate",
+            "mean_per_q_pearson",
+            "flattened_js",
+            "flattened_kl_human_to_model",
+        ]
+        + SECONDARY_AGREEMENT
+        + PIPELINE_INTERNAL
+    )
     rows = []
     for model, m in results.items():
         row = {"model": model}
-        for k in key_metrics:
+        for k in broader_metrics:
             row[k] = m.get(k)
         rows.append(row)
 
     with open(OUT / "broader_metrics_comparison.csv", "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["model"] + key_metrics)
+        w = csv.DictWriter(f, fieldnames=["model"] + broader_metrics)
         w.writeheader()
         w.writerows(rows)
 
     higher_better = {
         "mean_per_q_variance",
-        "quality_score_5a",
         "avg_entropy",
+        "pct_nonzero_variance",
         "pct_usable",
         "pearson_r",
         "exact_match_rate",
@@ -402,13 +455,27 @@ def main():
         "rv_vs_human",
         "mantel_r_vs_human",
         "mean_abs_r",
+        "quality_score_5a",  # only for internal ranking completeness
+    }
+    lower_better = {
+        "var_ratio_vs_human",
+        "pct_zero_var",
+        "avg_kl_human_to_model",
+        "avg_js",
+        "mae",
+        "flattened_js",
+        "flattened_kl_human_to_model",
+        "avg_concentration",
     }
     rankings = {}
-    for metric in key_metrics:
+    for metric in broader_metrics:
         vals = [(r["model"], r[metric]) for r in rows if r[metric] is not None]
         if not vals:
             continue
-        ordered = sorted(vals, key=lambda x: x[1], reverse=(metric in higher_better))
+        reverse = metric in higher_better
+        if metric in lower_better:
+            reverse = False
+        ordered = sorted(vals, key=lambda x: x[1], reverse=reverse)
         rankings[metric] = [
             {"rank": i + 1, "model": m, "value": v} for i, (m, v) in enumerate(ordered)
         ]
@@ -418,6 +485,42 @@ def main():
     gpt = results["GPT-5.1"]
     claude = results["Claude Sonnet 4.5"]
 
+    domain_note = None
+    if PAPER_DOMAIN.exists():
+        domain_note = (
+            "Paper domain_heterogeneity_comparison.csv covers baselines only "
+            "(no Grok columns); per-question domain labels not in questions_data.json, "
+            "so Grok domain variance was not recomputed."
+        )
+
+    paper_compact = {
+        "metric_framing": (
+            "Only paper-facing metrics from §3.2 / paper assets. "
+            "quality_score_5a is pipeline-internal and excluded from headlines."
+        ),
+        "columns": {
+            "mean_per_q_variance": "Per-Q Var (higher closer to human diversity)",
+            "var_ratio_vs_human": "Human Var / Model Var (paper Var Ratio; lower better)",
+            "avg_entropy": "Shannon entropy",
+            "pct_nonzero_variance": "% questions with nonzero variance",
+            "pct_zero_var": "% zero-variance questions",
+            "avg_kl_human_to_model": "KL(human||model) over answer categories",
+            "avg_js": "Jensen–Shannon vs human",
+            "mantel_r_vs_human": "Mantel r of Q×Q corr matrices vs human",
+            "rv_vs_human": "RV coefficient vs human corr structure",
+            "mean_abs_r": "Element-wise mean |r| of model Q×Q corr structure",
+            "pearson_r": "OPTIONAL secondary: cell Pearson vs Human vectors (not paper table)",
+            "mae": "OPTIONAL secondary: cell MAE vs Human (not paper table)",
+        },
+        "models": {
+            r["model"]: {k: r[k] for k in PAPER_METRICS + SECONDARY_AGREEMENT} for r in paper_rows
+        },
+        "domain_variance": domain_note,
+    }
+
+    with open(OUT / "paper_metrics_comparison.json", "w") as f:
+        json.dump(paper_compact, f, indent=2, default=float)
+
     summary = {
         "notes": {
             "prompting_audit": (
@@ -425,56 +528,108 @@ def main():
                 "human survey responses stripped from prompts; private file not committed."
             ),
             "metric_sources": (
-                "5a-style quality/entropy/KL-JS/RV/Mantel; flattened 20-bin KL/JS; "
-                "human agreement vs paper questions_data Human vectors."
+                "Paper-facing: Per-Q Var + Var Ratio, Shannon entropy, %-nonzero/zero variance, "
+                "KL/JS vs human, Mantel r / RV / element-wise |r| corr structure. "
+                "Optional secondary: Pearson/MAE human agreement (not paper tables). "
+                "quality_score_5a is pipeline-internal only — not a paper metric."
             ),
             "caveat_variance": (
-                "Higher mean per-Q variance is closer to humans on silicon-sampling diversity; "
-                "it is not a general capability ranking."
+                "Higher mean per-Q variance / lower Var Ratio is closer to humans on "
+                "silicon-sampling diversity; it is not a general capability ranking."
             ),
             "caveat_agreement": (
-                "Pearson/MAE vs human survey answers is a better proxy for "
-                "'answers like the philosophers'."
+                "Pearson/MAE vs human survey answers are optional secondary diagnostics "
+                "and are not claimed as paper-table metrics."
             ),
+            "quality_score_5a": "pipeline-internal composite from 5a; do not cite as paper metric",
+            "domain_variance": domain_note,
         },
         "models": results,
-        "rankings": rankings,
+        "rankings": {
+            k: v for k, v in rankings.items() if k != "quality_score_5a"
+        },
+        "rankings_pipeline_internal": {
+            "quality_score_5a": rankings.get("quality_score_5a"),
+        },
+        "paper_metrics_table": paper_compact["models"],
         "takeaways": {
             "prompting": "Prompts match paper demographic template; not a prompt bug.",
+            "paper_metrics_grok_demo_vs_gpt51": {
+                "mean_per_q_variance": {
+                    "grok_demo": gdemo["mean_per_q_variance"],
+                    "gpt51": gpt["mean_per_q_variance"],
+                    "note": "higher better (closer to human)",
+                },
+                "var_ratio_vs_human": {
+                    "grok_demo": gdemo["var_ratio_vs_human"],
+                    "gpt51": gpt["var_ratio_vs_human"],
+                    "note": "lower better (less collapse)",
+                },
+                "avg_entropy": {
+                    "grok_demo": gdemo["avg_entropy"],
+                    "gpt51": gpt["avg_entropy"],
+                    "note": "higher better",
+                },
+                "pct_zero_var": {
+                    "grok_demo": gdemo["pct_zero_var"],
+                    "gpt51": gpt["pct_zero_var"],
+                    "note": "lower better",
+                },
+                "avg_js": {
+                    "grok_demo": gdemo["avg_js"],
+                    "gpt51": gpt["avg_js"],
+                    "note": "lower better",
+                },
+                "avg_kl_human_to_model": {
+                    "grok_demo": gdemo["avg_kl_human_to_model"],
+                    "gpt51": gpt["avg_kl_human_to_model"],
+                    "note": "lower better",
+                },
+                "mantel_r_vs_human": {
+                    "grok_demo": gdemo["mantel_r_vs_human"],
+                    "gpt51": gpt["mantel_r_vs_human"],
+                    "note": "higher better",
+                },
+                "rv_vs_human": {
+                    "grok_demo": gdemo["rv_vs_human"],
+                    "gpt51": gpt["rv_vs_human"],
+                    "note": "higher better",
+                },
+                "mean_abs_r": {
+                    "grok_demo": gdemo["mean_abs_r"],
+                    "gpt51": gpt["mean_abs_r"],
+                    "note": "element-wise |r|; compare to human 0.133",
+                },
+            },
             "variance": {
                 "grok_demo": gdemo["mean_per_q_variance"],
                 "grok_name": gname["mean_per_q_variance"],
                 "gpt51": gpt["mean_per_q_variance"],
                 "claude": claude["mean_per_q_variance"],
+                "human": results["Human"]["mean_per_q_variance"],
             },
-            "human_agreement_pearson": {
-                "grok_demo": gdemo.get("pearson_r"),
-                "grok_name": gname.get("pearson_r"),
-                "gpt51": gpt.get("pearson_r"),
-                "claude": claude.get("pearson_r"),
+            "human_agreement_secondary_not_paper_table": {
+                "grok_demo_pearson": gdemo.get("pearson_r"),
+                "grok_demo_mae": gdemo.get("mae"),
+                "gpt51_pearson": gpt.get("pearson_r"),
+                "gpt51_mae": gpt.get("mae"),
+                "claude_pearson": claude.get("pearson_r"),
             },
-            "quality_score_5a": {
-                "grok_demo": gdemo.get("quality_score_5a"),
-                "grok_name": gname.get("quality_score_5a"),
-                "gpt51": gpt.get("quality_score_5a"),
-                "claude": claude.get("quality_score_5a"),
-                "human": results["Human"].get("quality_score_5a"),
-            },
-            "distribution_js_vs_human": {
-                "grok_demo": gdemo.get("avg_js"),
-                "gpt51": gpt.get("avg_js"),
-                "claude": claude.get("avg_js"),
-            },
-            "corr_structure_rv_vs_human": {
-                "grok_demo": gdemo.get("rv_vs_human"),
-                "gpt51": gpt.get("rv_vs_human"),
-                "claude": claude.get("rv_vs_human"),
+            "pipeline_internal_not_paper": {
+                "quality_score_5a": {
+                    "grok_demo": gdemo.get("quality_score_5a"),
+                    "grok_name": gname.get("quality_score_5a"),
+                    "gpt51": gpt.get("quality_score_5a"),
+                    "claude": claude.get("quality_score_5a"),
+                    "human": results["Human"].get("quality_score_5a"),
+                    "note": "pipeline-internal only",
+                }
             },
             "suggested_improvements": [
                 "Re-run with reasoning enabled (Grok 4.3 is a reasoning model).",
                 "Strip phd_country==Unknown instead of injecting (Unknown).",
                 "Optional hybrid: demographics AND philosopher name.",
-                "Treat human-agreement / JS / RV as primary better-than-GPT-5.1 criteria, not variance alone.",
+                "Judge vs GPT-5.1 on paper metrics (Per-Q Var, entropy, KL/JS, Mantel/RV), not quality_score.",
             ],
         },
     }
@@ -482,19 +637,23 @@ def main():
     with open(OUT / "broader_metrics_summary.json", "w") as f:
         json.dump(summary, f, indent=2, default=float)
 
-    print("model | var | quality | H | conc | zero% | r | mae | JS | RV")
-    for r in sorted(rows, key=lambda x: -(x["mean_per_q_variance"] or -1)):
+    print(
+        "model | Per-Q Var | VarRatio | H | nonzero% | KL | JS | Mantel | RV | |r|"
+    )
+    for r in sorted(paper_rows, key=lambda x: -(x["mean_per_q_variance"] or -1)):
 
         def fmt(v, nd=3):
             return f"{v:.{nd}f}" if isinstance(v, (int, float)) else "NA"
 
         print(
-            f"{r['model'][:28]:28s} | {fmt(r['mean_per_q_variance'],4)} | {fmt(r['quality_score_5a'],1)} | "
-            f"{fmt(r['avg_entropy'])} | {fmt(r['avg_concentration'])} | {fmt(r['pct_zero_var'],1)} | "
-            f"{fmt(r['pearson_r'])} | {fmt(r['mae'])} | {fmt(r['avg_js'])} | {fmt(r['rv_vs_human'])}"
+            f"{r['model'][:28]:28s} | {fmt(r['mean_per_q_variance'],4)} | "
+            f"{fmt(r['var_ratio_vs_human'],2)} | {fmt(r['avg_entropy'])} | "
+            f"{fmt(r['pct_nonzero_variance'],1)} | {fmt(r['avg_kl_human_to_model'],2)} | "
+            f"{fmt(r['avg_js'])} | {fmt(r['mantel_r_vs_human'])} | "
+            f"{fmt(r['rv_vs_human'])} | {fmt(r['mean_abs_r'])}"
         )
-    print("\nTakeaways:")
-    print(json.dumps(summary["takeaways"], indent=2))
+    print("\nTakeaways (paper metrics):")
+    print(json.dumps(summary["takeaways"]["paper_metrics_grok_demo_vs_gpt51"], indent=2))
 
 
 if __name__ == "__main__":
