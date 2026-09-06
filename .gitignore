@@ -4,3 +4,9 @@ llm_responses_*/
 .env
 .env.*
 *.log
+
+# Private demographics / human survey merges — never commit
+private_data/
+**/merged_human_survey*.json
+**/merged_human_survey_philosophers*.json
+philosophers_with_countries.private.json

@@ -8,9 +8,11 @@ merges results into one combined JSON.
 
 Usage:
   export OPENROUTER_API_KEY=...
-  python 3c_run_grok43_chunked_batch.py submit --data-dir full_data_reconstructed --output-dir /tmp/grok43_full
-  python 3c_run_grok43_chunked_batch.py status --output-dir /tmp/grok43_full
-  python 3c_run_grok43_chunked_batch.py collect --output-dir /tmp/grok43_full
+  # Prefer a local --data-dir with full demographics (private; not in git).
+  # load_data() strips any human `responses` fields before prompting.
+  python 3c_run_grok43_chunked_batch.py submit --data-dir /tmp/grok43_demo_data --output-dir /tmp/grok43_demo_full
+  python 3c_run_grok43_chunked_batch.py status --output-dir /tmp/grok43_demo_full
+  python 3c_run_grok43_chunked_batch.py collect --output-dir /tmp/grok43_demo_full
 """
 
 from __future__ import annotations

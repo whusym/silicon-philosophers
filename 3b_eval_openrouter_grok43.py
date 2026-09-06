@@ -25,6 +25,11 @@ Usage:
 Optional:
     --data-dir DIR   # philosophers_with_countries.json + question_answer_options.json
     --output-dir DIR
+
+Private demographics:
+    Keep merged survey/demographics files OUT of git. Point --data-dir at a
+    local folder that contains philosophers_with_countries.json (responses
+    stripped on load) plus question_answer_options.json.
 """
 
 from __future__ import annotations
@@ -304,6 +309,12 @@ def chat_completion(api_key: str, prompt: str) -> str:
 # ---------------------------------------------------------------------------
 
 
+def sanitize_philosopher(philosopher: Dict[str, Any]) -> Dict[str, Any]:
+    """Drop human survey answers / private extras so they cannot leak into prompts."""
+    drop = {"responses", "survey_response_count", "url", "_note"}
+    return {k: v for k, v in philosopher.items() if k not in drop}
+
+
 def load_data(data_dir: Path) -> Tuple[List[Dict], Dict[str, List[str]]]:
     phil_path = data_dir / PHILOSOPHERS_FILE
     quest_path = data_dir / QUESTIONS_FILE
@@ -313,11 +324,22 @@ def load_data(data_dir: Path) -> Tuple[List[Dict], Dict[str, List[str]]]:
         raise SystemExit(f"Missing {quest_path}")
 
     with open(phil_path) as f:
-        philosophers = json.load(f)
+        philosophers = [sanitize_philosopher(p) for p in json.load(f)]
     with open(quest_path) as f:
         questions = json.load(f)
 
-    print(f"Loaded {len(philosophers)} philosophers and {len(questions)} questions")
+    n_with_demo = sum(
+        1
+        for p in philosophers
+        if p.get("areas_of_specialization")
+        or p.get("areas_of_interest")
+        or p.get("phd_institution")
+        or p.get("current_institution")
+    )
+    print(
+        f"Loaded {len(philosophers)} philosophers "
+        f"({n_with_demo} with demographics) and {len(questions)} questions"
+    )
     return philosophers, questions
 
 
