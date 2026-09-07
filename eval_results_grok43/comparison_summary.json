@@ -1,0 +1,198 @@
+{
+  "model": "x-ai/grok-4.3",
+  "label": "Grok 4.3",
+  "eval_notes": {
+    "persona": "name-only reconstructed philosophers (demographics unavailable in public repos)",
+    "n_philosophers": 277,
+    "n_questions": 100,
+    "n_cells": 27700,
+    "n_success": 27700,
+    "n_scored": 27699,
+    "reasoning_enabled": false,
+    "max_tokens": 256,
+    "via": "OpenRouter batch API"
+  },
+  "mean_per_question_variance": 0.00949212090966962,
+  "median_per_question_variance": 0.002999191961318406,
+  "score_distribution": {
+    "mean": 0.7862828982995776,
+    "stdev": 0.2726961288950674,
+    "min": 0.0,
+    "max": 1.0,
+    "hist": {
+      "0.0": 549,
+      "0.25": 3645,
+      "0.5": 531,
+      "0.75": 9486,
+      "1.0": 13488
+    },
+    "bucket_counts": {
+      "1.0": 13488,
+      "0.25": 3645,
+      "0.5": 531,
+      "0.75": 9486,
+      "0.0": 549
+    }
+  },
+  "persona_sensitivity": {
+    "mean_modal_score_share_per_question": 0.8741080678072517,
+    "median_modal_score_share_per_question": 0.9548736462093863,
+    "n_questions_zero_var": 31,
+    "n_questions_var_lt_0.01": 64
+  },
+  "variance_ranking_high_to_low": [
+    {
+      "model": "Human",
+      "mean_per_q_var": 0.07112216391837375,
+      "ratio_vs_human": 1.0
+    },
+    {
+      "model": "Claude Sonnet 4.5",
+      "mean_per_q_var": 0.03995413052946319,
+      "ratio_vs_human": 1.780095398795538
+    },
+    {
+      "model": "Mistral 7B",
+      "mean_per_q_var": 0.02780270262071823,
+      "ratio_vs_human": 2.5581025301250535
+    },
+    {
+      "model": "Qwen 3 4B",
+      "mean_per_q_var": 0.027623352893261503,
+      "ratio_vs_human": 2.5747114839098133
+    },
+    {
+      "model": "Llama 3.1 8B",
+      "mean_per_q_var": 0.02553647300165039,
+      "ratio_vs_human": 2.7851208705985835
+    },
+    {
+      "model": "Llama 3.1 8B (FT)",
+      "mean_per_q_var": 0.020702321444357845,
+      "ratio_vs_human": 3.4354680517124905
+    },
+    {
+      "model": "GPT-4o",
+      "mean_per_q_var": 0.01979618497909284,
+      "ratio_vs_human": 3.592720718334737
+    },
+    {
+      "model": "GPT-5.1",
+      "mean_per_q_var": 0.019650669236909953,
+      "ratio_vs_human": 3.619325278997859
+    },
+    {
+      "model": "Grok 4.3",
+      "mean_per_q_var": 0.00949212090966962,
+      "ratio_vs_human": 7.492757898387243
+    }
+  ],
+  "interpretation": {
+    "headline": "Grok 4.3 shows the lowest mean per-question score variance among compared models (~7.5x below human), indicating weak persona differentiation under name-only prompts.",
+    "caveat": "Not a full demographic silicon-sampling replication; public data lacked country/gender/etc fields used in the paper pipeline."
+  },
+  "highest_variance_questions": [
+    {
+      "question": "consciousness: functionalism",
+      "var": 0.06247963612193564,
+      "mean_score": 0.5045126353790613
+    },
+    {
+      "question": "grounds of intentionality: phenomenal",
+      "var": 0.06194854618201723,
+      "mean_score": 0.5180505415162455
+    },
+    {
+      "question": "kant: two worlds",
+      "var": 0.061906189315643366,
+      "mean_score": 0.5243682310469314
+    },
+    {
+      "question": "morality: non-naturalism realism",
+      "var": 0.06024449686559189,
+      "mean_score": 0.5541516245487365
+    },
+    {
+      "question": "abstract objects: nominalism",
+      "var": 0.06021191466068892,
+      "mean_score": 0.5478339350180506
+    },
+    {
+      "question": "immortality: yes",
+      "var": 0.04017997794580971,
+      "mean_score": 0.29891304347826086
+    },
+    {
+      "question": "abortion: permissible",
+      "var": 0.03360202791643316,
+      "mean_score": 0.8664259927797834
+    },
+    {
+      "question": "material composition: restrictivism",
+      "var": 0.03278421457336861,
+      "mean_score": 0.6723826714801444
+    },
+    {
+      "question": "metaontology: heavyweight realism",
+      "var": 0.031884945718046634,
+      "mean_score": 0.6768953068592057
+    },
+    {
+      "question": "method in political philosophy: ideal theory",
+      "var": 0.025783927849965464,
+      "mean_score": 0.6904332129963899
+    }
+  ],
+  "lowest_variance_questions": [
+    {
+      "question": "a priori knowledge: yes",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "aim of philosophy: understanding",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "analysis of knowledge: justified true belief",
+      "var": 0.0,
+      "mean_score": 0.25
+    },
+    {
+      "question": "analytic-synthetic distinction: yes",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "chinese room: doesn't understand",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "continuum hypothesis: indeterminate",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "external world: non-skeptical realism",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "free will: compatibilism",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "gender categories: revise",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "god: atheism",
+      "var": 0.0,
+      "mean_score": 1.0
+    }
+  ]
+}

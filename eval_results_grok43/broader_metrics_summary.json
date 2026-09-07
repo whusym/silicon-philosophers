@@ -1,0 +1,1700 @@
+{
+  "notes": {
+    "prompting_audit": "Grok persona+question prompts match 3_model_eval.py for demographic fields; human survey responses stripped from prompts; private file not committed.",
+    "metric_sources": "Paper-facing: Per-Q Var + Var Ratio, Shannon entropy, %-nonzero/zero variance, KL/JS vs human, Mantel r / RV / element-wise |r| corr structure. Optional secondary: Pearson/MAE human agreement (not paper tables). quality_score_5a is pipeline-internal only \u2014 not a paper metric.",
+    "caveat_variance": "Higher mean per-Q variance / lower Var Ratio is closer to humans on silicon-sampling diversity; it is not a general capability ranking.",
+    "caveat_agreement": "Pearson/MAE vs human survey answers are optional secondary diagnostics and are not claimed as paper-table metrics.",
+    "quality_score_5a": "pipeline-internal composite from 5a; do not cite as paper metric",
+    "domain_variance": "Paper domain_heterogeneity_comparison.csv covers baselines only (no Grok columns); per-question domain labels not in questions_data.json, so Grok domain variance was not recomputed."
+  },
+  "models": {
+    "Human": {
+      "n_questions": 100,
+      "mean_per_q_variance": 0.07112216391837375,
+      "avg_entropy": 1.08903509087556,
+      "avg_normalized_entropy": 0.7284240212843173,
+      "avg_unique_values": 3.09,
+      "avg_concentration": 0.6158948136082981,
+      "pct_zero_var": 0.0,
+      "pct_nonzero_variance": 100.0,
+      "pct_low_var": 31.0,
+      "pct_problematic": 31.0,
+      "pct_usable": 69.0,
+      "quality_score_5a": 49.01756669015944,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 10198,
+      "pearson_r": 1.0,
+      "mae": 0.0,
+      "exact_match_rate": 1.0,
+      "within_0_25_rate": 1.0,
+      "mean_per_q_pearson": 1.0,
+      "avg_kl_human_to_model": 0.0,
+      "avg_js": 0.0,
+      "flattened_js": 0.0,
+      "flattened_kl_human_to_model": 0.0,
+      "rv_vs_human": 1.0,
+      "mantel_r_vs_human": 1.0,
+      "mean_abs_r": 0.13252647965489375,
+      "median_abs_r": 0.11058357937210286,
+      "std_r": 0.16624642978661813,
+      "pct_abs_r_gt_0_5": 0.8550185873605948,
+      "n_pairs": 2690,
+      "var_ratio_vs_human": 1.0000000000000002
+    },
+    "GPT-5.1": {
+      "n_questions": 95,
+      "mean_per_q_variance": 0.019650669236909953,
+      "avg_entropy": 0.5899463539882304,
+      "avg_normalized_entropy": 0.37710646842173523,
+      "avg_unique_values": 2.8526315789473684,
+      "avg_concentration": 0.8414492197049404,
+      "pct_zero_var": 7.368421052631578,
+      "pct_nonzero_variance": 92.63157894736842,
+      "pct_low_var": 47.368421052631575,
+      "pct_problematic": 47.368421052631575,
+      "pct_usable": 52.631578947368425,
+      "quality_score_5a": 26.505188378456385,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 7725,
+      "pearson_r": 0.3652592108582939,
+      "mae": 0.2631160425335182,
+      "exact_match_rate": 0.43779935275080906,
+      "within_0_25_rate": 0.7553398058252427,
+      "model_mean": 0.6825714285714286,
+      "human_mean": 0.7063932809369702,
+      "mean_per_q_pearson": 0.0697134808017838,
+      "median_per_q_pearson": 0.05527810056802844,
+      "n_questions_with_corr": 72,
+      "avg_kl_human_to_model": 6.0254068262592035,
+      "avg_js": 0.20664907249226536,
+      "n_questions_div": 94,
+      "flattened_pearson_r": 0.3652592108582939,
+      "flattened_kl_human_to_model": 0.2942753318887872,
+      "flattened_js": 0.07731174207792443,
+      "n_flat_cells": 7725,
+      "rv_vs_human": 0.44392196659541416,
+      "mantel_r_vs_human": 0.13370872622487512,
+      "mean_abs_r": 0.11631229927046792,
+      "median_abs_r": 0.07652004437581136,
+      "std_r": 0.16966667916791847,
+      "pct_abs_r_gt_0_5": 1.757597949469059,
+      "n_pairs": 2731,
+      "cell_coverage": 0.6470036101083032,
+      "var_ratio_vs_human": 3.6193252789978594
+    },
+    "Claude Sonnet 4.5": {
+      "n_questions": 98,
+      "mean_per_q_variance": 0.03995413052946319,
+      "avg_entropy": 0.7658221649493618,
+      "avg_normalized_entropy": 0.4737569776658197,
+      "avg_unique_values": 2.9693877551020407,
+      "avg_concentration": 0.7717906667743346,
+      "pct_zero_var": 8.16326530612245,
+      "pct_nonzero_variance": 91.83673469387755,
+      "pct_low_var": 34.69387755102041,
+      "pct_problematic": 34.69387755102041,
+      "pct_usable": 65.3061224489796,
+      "quality_score_5a": 33.76029448907275,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 8167,
+      "pearson_r": 0.4254024419867746,
+      "mae": 0.22196819954870647,
+      "exact_match_rate": 0.5904248806171176,
+      "within_0_25_rate": 0.7836414840210604,
+      "model_mean": 0.7271939337752978,
+      "human_mean": 0.7270341735322756,
+      "mean_per_q_pearson": 0.09076114103956867,
+      "median_per_q_pearson": 0.10744528743886693,
+      "n_questions_with_corr": 80,
+      "avg_kl_human_to_model": 2.5325762701867665,
+      "avg_js": 0.1166604638396064,
+      "n_questions_div": 94,
+      "flattened_pearson_r": 0.4254024419867746,
+      "flattened_kl_human_to_model": 0.029858396262377407,
+      "flattened_js": 0.0038139181900762216,
+      "n_flat_cells": 8167,
+      "rv_vs_human": 0.4556059860736352,
+      "mantel_r_vs_human": 0.2689688792445284,
+      "mean_abs_r": 0.14432978298275445,
+      "median_abs_r": 0.1043881156746336,
+      "std_r": 0.19591148299290623,
+      "pct_abs_r_gt_0_5": 2.727272727272727,
+      "n_pairs": 3190,
+      "cell_coverage": 0.676101083032491,
+      "var_ratio_vs_human": 1.7800953987955381
+    },
+    "GPT-4o": {
+      "n_questions": 95,
+      "mean_per_q_variance": 0.01979618497909284,
+      "avg_entropy": 0.5900076589329424,
+      "avg_normalized_entropy": 0.377636230970204,
+      "avg_unique_values": 2.8210526315789473,
+      "avg_concentration": 0.8392050958377623,
+      "pct_zero_var": 10.526315789473683,
+      "pct_nonzero_variance": 89.47368421052632,
+      "pct_low_var": 45.26315789473684,
+      "pct_problematic": 45.26315789473684,
+      "pct_usable": 54.73684210526316,
+      "quality_score_5a": 26.43384118896609,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 7728,
+      "pearson_r": 0.36812492465004626,
+      "mae": 0.26267284087548065,
+      "exact_match_rate": 0.4377587991718426,
+      "within_0_25_rate": 0.7560817805383023,
+      "model_mean": 0.6814662821650399,
+      "human_mean": 0.7067660578724243,
+      "mean_per_q_pearson": 0.062202248898322515,
+      "median_per_q_pearson": 0.0562997149803211,
+      "n_questions_with_corr": 70,
+      "avg_kl_human_to_model": 6.031266369646559,
+      "avg_js": 0.20682486630493763,
+      "n_questions_div": 94,
+      "flattened_pearson_r": 0.36812492465004626,
+      "flattened_kl_human_to_model": 0.29304010510327894,
+      "flattened_js": 0.07700653629164779,
+      "n_flat_cells": 7728,
+      "rv_vs_human": 0.4479643104956985,
+      "mantel_r_vs_human": 0.1530095701456239,
+      "mean_abs_r": 0.12041093762956676,
+      "median_abs_r": 0.08369650676135183,
+      "std_r": 0.17376747558809477,
+      "pct_abs_r_gt_0_5": 1.7753763025858742,
+      "n_pairs": 2591,
+      "cell_coverage": 0.6501444043321299,
+      "var_ratio_vs_human": 3.5927207183347374
+    },
+    "Llama 3.1 8B": {
+      "n_questions": 99,
+      "mean_per_q_variance": 0.02553647300165039,
+      "avg_entropy": 0.6112960741472988,
+      "avg_normalized_entropy": 0.4265080331333492,
+      "avg_unique_values": 2.707070707070707,
+      "avg_concentration": 0.8232803092477707,
+      "pct_zero_var": 9.090909090909092,
+      "pct_nonzero_variance": 90.9090909090909,
+      "pct_low_var": 49.494949494949495,
+      "pct_problematic": 49.494949494949495,
+      "pct_usable": 50.505050505050505,
+      "quality_score_5a": 28.30223409832478,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 8980,
+      "pearson_r": 0.2267906595156239,
+      "mae": 0.29665155371725527,
+      "exact_match_rate": 0.47583518930957686,
+      "within_0_25_rate": 0.7237193763919821,
+      "model_mean": 0.689460441192067,
+      "human_mean": 0.7253096828932017,
+      "mean_per_q_pearson": 0.028892463922990948,
+      "median_per_q_pearson": 0.025533995611807404,
+      "n_questions_with_corr": 77,
+      "avg_kl_human_to_model": 5.0904351047173275,
+      "avg_js": 0.17089343116142727,
+      "n_questions_div": 98,
+      "flattened_pearson_r": 0.2267906595156239,
+      "flattened_kl_human_to_model": 0.0728466797277495,
+      "flattened_js": 0.020773062074013995,
+      "n_flat_cells": 8980,
+      "rv_vs_human": 0.42206641347558777,
+      "mantel_r_vs_human": 0.10628355512253325,
+      "mean_abs_r": 0.11321995784301198,
+      "median_abs_r": 0.07962575719597965,
+      "std_r": 0.15246433190313174,
+      "pct_abs_r_gt_0_5": 0.8741721854304637,
+      "n_pairs": 3775,
+      "cell_coverage": 0.8492057761732852,
+      "var_ratio_vs_human": 2.785120870598584
+    },
+    "Llama 3.1 8B (FT)": {
+      "n_questions": 99,
+      "mean_per_q_variance": 0.020702321444357845,
+      "avg_entropy": 0.7364425427913461,
+      "avg_normalized_entropy": 0.48802020185593414,
+      "avg_unique_values": 2.8585858585858586,
+      "avg_concentration": 0.7792393712151212,
+      "pct_zero_var": 5.05050505050505,
+      "pct_nonzero_variance": 94.94949494949495,
+      "pct_low_var": 34.34343434343434,
+      "pct_problematic": 34.34343434343434,
+      "pct_usable": 65.65656565656566,
+      "quality_score_5a": 31.522783212665068,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 8793,
+      "pearson_r": 0.25509161530088,
+      "mae": 0.28980628530270286,
+      "exact_match_rate": 0.4378482884112362,
+      "within_0_25_rate": 0.6881610371886728,
+      "model_mean": 0.6911301197381033,
+      "human_mean": 0.7227261403822305,
+      "mean_per_q_pearson": 0.06594117270468648,
+      "median_per_q_pearson": 0.04027994934533361,
+      "n_questions_with_corr": 81,
+      "avg_kl_human_to_model": 6.120463669791912,
+      "avg_js": 0.2412779869177529,
+      "n_questions_div": 98,
+      "flattened_pearson_r": 0.25509161530088,
+      "flattened_kl_human_to_model": 0.14433444542670115,
+      "flattened_js": 0.0406254979177275,
+      "n_flat_cells": 8793,
+      "rv_vs_human": 0.4132631406668624,
+      "mantel_r_vs_human": 0.1327687315616554,
+      "mean_abs_r": 0.12780020740297726,
+      "median_abs_r": 0.09667607740832002,
+      "std_r": 0.16090958168526973,
+      "pct_abs_r_gt_0_5": 1.0505252626313157,
+      "n_pairs": 3998,
+      "cell_coverage": 0.8151263537906137,
+      "var_ratio_vs_human": 3.435468051712491
+    },
+    "Mistral 7B": {
+      "n_questions": 98,
+      "mean_per_q_variance": 0.02780270262071823,
+      "avg_entropy": 0.6641049939724913,
+      "avg_normalized_entropy": 0.44989526364931987,
+      "avg_unique_values": 2.7346938775510203,
+      "avg_concentration": 0.8038660134493032,
+      "pct_zero_var": 9.183673469387756,
+      "pct_nonzero_variance": 90.81632653061224,
+      "pct_low_var": 39.795918367346935,
+      "pct_problematic": 39.795918367346935,
+      "pct_usable": 60.204081632653065,
+      "quality_score_5a": 29.853947223073945,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 8790,
+      "pearson_r": 0.23299247768158035,
+      "mae": 0.3429963703342543,
+      "exact_match_rate": 0.3083048919226394,
+      "within_0_25_rate": 0.5439135381114903,
+      "model_mean": 0.6110203694674684,
+      "human_mean": 0.7165970529281109,
+      "mean_per_q_pearson": 0.028340092023871177,
+      "median_per_q_pearson": 0.01247089663488778,
+      "n_questions_with_corr": 77,
+      "avg_kl_human_to_model": 9.034436026156841,
+      "avg_js": 0.3454220874367719,
+      "n_questions_div": 94,
+      "flattened_pearson_r": 0.23299247768158035,
+      "flattened_kl_human_to_model": 0.4986684670925148,
+      "flattened_js": 0.13715949726601517,
+      "n_flat_cells": 8790,
+      "rv_vs_human": 0.42114448561441603,
+      "mantel_r_vs_human": 0.09022966996660237,
+      "mean_abs_r": 0.1131371145846524,
+      "median_abs_r": 0.08109178740187681,
+      "std_r": 0.15114218530673523,
+      "pct_abs_r_gt_0_5": 0.6613392119041058,
+      "n_pairs": 3629,
+      "cell_coverage": 0.8070758122743682,
+      "var_ratio_vs_human": 2.558102530125054
+    },
+    "Qwen 3 4B": {
+      "n_questions": 100,
+      "mean_per_q_variance": 0.027623352893261503,
+      "avg_entropy": 0.4784216524319115,
+      "avg_normalized_entropy": 0.30670441614696853,
+      "avg_unique_values": 2.37,
+      "avg_concentration": 0.8592193418639466,
+      "pct_zero_var": 30.0,
+      "pct_nonzero_variance": 70.0,
+      "pct_low_var": 60.0,
+      "pct_problematic": 60.0,
+      "pct_usable": 40.0,
+      "quality_score_5a": 22.332984227136542,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 9802,
+      "pearson_r": 0.20197118434573094,
+      "mae": 0.2785364502871135,
+      "exact_match_rate": 0.4483778820648847,
+      "within_0_25_rate": 0.7404611303815548,
+      "model_mean": 0.6856474869074339,
+      "human_mean": 0.7327544913088679,
+      "mean_per_q_pearson": 0.028076640077054363,
+      "median_per_q_pearson": 0.030202794743168667,
+      "n_questions_with_corr": 61,
+      "avg_kl_human_to_model": 10.148696276946927,
+      "avg_js": 0.22892777902536643,
+      "n_questions_div": 97,
+      "flattened_pearson_r": 0.20197118434573094,
+      "flattened_kl_human_to_model": 0.2460097872216389,
+      "flattened_js": 0.06588328506647662,
+      "n_flat_cells": 9802,
+      "rv_vs_human": 0.47425891806716214,
+      "mantel_r_vs_human": 0.06668192217541,
+      "mean_abs_r": 0.10051856381856383,
+      "median_abs_r": 0.07118138449009835,
+      "std_r": 0.14272771717885419,
+      "pct_abs_r_gt_0_5": 0.7532122286220646,
+      "n_pairs": 2257,
+      "cell_coverage": 0.921985559566787,
+      "var_ratio_vs_human": 2.5747114839098137
+    },
+    "Grok 4.3 (demographics)": {
+      "n_questions": 100,
+      "mean_per_q_variance": 0.01597726364015799,
+      "avg_entropy": 0.7095551338636468,
+      "avg_normalized_entropy": 0.426645014482185,
+      "avg_unique_values": 3.04,
+      "avg_concentration": 0.7974137566989655,
+      "pct_zero_var": 11.0,
+      "pct_nonzero_variance": 89.0,
+      "pct_low_var": 24.0,
+      "pct_problematic": 24.0,
+      "pct_usable": 76.0,
+      "quality_score_5a": 29.66173288100721,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 10182,
+      "pearson_r": 0.3198028796057792,
+      "mae": 0.2505614483074707,
+      "exact_match_rate": 0.4266352386564526,
+      "within_0_25_rate": 0.7557454331172657,
+      "model_mean": 0.7680711058731094,
+      "human_mean": 0.7371301830494523,
+      "mean_per_q_pearson": 0.04099788346593342,
+      "median_per_q_pearson": 0.05003528818761417,
+      "n_questions_with_corr": 83,
+      "avg_kl_human_to_model": 6.6178026775110155,
+      "avg_js": 0.25084530223752843,
+      "n_questions_div": 99,
+      "flattened_pearson_r": 0.3198028796057792,
+      "flattened_kl_human_to_model": 0.38959542893867083,
+      "flattened_js": 0.07668976993144747,
+      "n_flat_cells": 10182,
+      "rv_vs_human": 0.47520060031141353,
+      "mantel_r_vs_human": 0.18438529706240575,
+      "mean_abs_r": 0.11839295594108647,
+      "median_abs_r": 0.09241360128823559,
+      "std_r": 0.14144371243985748,
+      "pct_abs_r_gt_0_5": 0.7150153217568949,
+      "n_pairs": 3916,
+      "cell_coverage": 0.9988447653429603,
+      "agreement_vs_private_human": {
+        "n_paired_cells": 8112,
+        "pearson_r": 0.11674936559713774,
+        "mae": 0.17942554240631164,
+        "exact_match_rate": 0.4780571992110454,
+        "within_0_25_rate": 0.8594674556213018,
+        "model_mean": 0.8118836291913215,
+        "human_mean": 0.8663091715976331
+      },
+      "private_human_nonnull_cells": 8118,
+      "var_ratio_vs_human": 4.4514608709098376
+    },
+    "Grok 4.3 (name-only)": {
+      "n_questions": 100,
+      "mean_per_q_variance": 0.00949212090966962,
+      "avg_entropy": 0.3895949575762076,
+      "avg_normalized_entropy": 0.3339083951310947,
+      "avg_unique_values": 1.9,
+      "avg_concentration": 0.8741080678072515,
+      "pct_zero_var": 31.0,
+      "pct_nonzero_variance": 69.0,
+      "pct_low_var": 82.0,
+      "pct_problematic": 82.0,
+      "pct_usable": 18.0,
+      "quality_score_5a": 18.613762249718512,
+      "quality_score_5a_note": "pipeline-internal only; not a paper metric",
+      "n_paired_cells": 10198,
+      "pearson_r": 0.33919068013301606,
+      "mae": 0.23855331110675293,
+      "exact_match_rate": 0.47019023337909394,
+      "within_0_25_rate": 0.8025102961364974,
+      "model_mean": 0.8037115120611885,
+      "human_mean": 0.736562024299816,
+      "mean_per_q_pearson": 0.040369621938427906,
+      "median_per_q_pearson": 0.04050631008727827,
+      "n_questions_with_corr": 58,
+      "avg_kl_human_to_model": 9.74049502529117,
+      "avg_js": 0.23478701022729415,
+      "n_questions_div": 99,
+      "flattened_pearson_r": 0.33919068013301606,
+      "flattened_kl_human_to_model": 0.3066023011005838,
+      "flattened_js": 0.06413481989440838,
+      "n_flat_cells": 10198,
+      "rv_vs_human": 0.5002054839592451,
+      "mantel_r_vs_human": 0.04375524848944176,
+      "mean_abs_r": 0.09685651787947361,
+      "median_abs_r": 0.07101707900205476,
+      "std_r": 0.11347613972462,
+      "pct_abs_r_gt_0_5": 0.2131287297527707,
+      "n_pairs": 2346,
+      "cell_coverage": 0.9999638989169675,
+      "agreement_vs_private_human": {
+        "n_paired_cells": 8118,
+        "pearson_r": 0.11523994354662845,
+        "mae": 0.16731337767923135,
+        "exact_match_rate": 0.5130574033013058,
+        "within_0_25_rate": 0.8859324956885932,
+        "model_mean": 0.8523035230352304,
+        "human_mean": 0.8663155949741316
+      },
+      "private_human_nonnull_cells": 8118,
+      "var_ratio_vs_human": 7.492757898387245
+    }
+  },
+  "rankings": {
+    "mean_per_q_variance": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 0.07112216391837375
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.03995413052946319
+      },
+      {
+        "rank": 3,
+        "model": "Mistral 7B",
+        "value": 0.02780270262071823
+      },
+      {
+        "rank": 4,
+        "model": "Qwen 3 4B",
+        "value": 0.027623352893261503
+      },
+      {
+        "rank": 5,
+        "model": "Llama 3.1 8B",
+        "value": 0.02553647300165039
+      },
+      {
+        "rank": 6,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.020702321444357845
+      },
+      {
+        "rank": 7,
+        "model": "GPT-4o",
+        "value": 0.01979618497909284
+      },
+      {
+        "rank": 8,
+        "model": "GPT-5.1",
+        "value": 0.019650669236909953
+      },
+      {
+        "rank": 9,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.01597726364015799
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.00949212090966962
+      }
+    ],
+    "var_ratio_vs_human": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 1.0000000000000002
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 1.7800953987955381
+      },
+      {
+        "rank": 3,
+        "model": "Mistral 7B",
+        "value": 2.558102530125054
+      },
+      {
+        "rank": 4,
+        "model": "Qwen 3 4B",
+        "value": 2.5747114839098137
+      },
+      {
+        "rank": 5,
+        "model": "Llama 3.1 8B",
+        "value": 2.785120870598584
+      },
+      {
+        "rank": 6,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 3.435468051712491
+      },
+      {
+        "rank": 7,
+        "model": "GPT-4o",
+        "value": 3.5927207183347374
+      },
+      {
+        "rank": 8,
+        "model": "GPT-5.1",
+        "value": 3.6193252789978594
+      },
+      {
+        "rank": 9,
+        "model": "Grok 4.3 (demographics)",
+        "value": 4.4514608709098376
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 7.492757898387245
+      }
+    ],
+    "avg_entropy": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 1.08903509087556
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.7658221649493618
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.7364425427913461
+      },
+      {
+        "rank": 4,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.7095551338636468
+      },
+      {
+        "rank": 5,
+        "model": "Mistral 7B",
+        "value": 0.6641049939724913
+      },
+      {
+        "rank": 6,
+        "model": "Llama 3.1 8B",
+        "value": 0.6112960741472988
+      },
+      {
+        "rank": 7,
+        "model": "GPT-4o",
+        "value": 0.5900076589329424
+      },
+      {
+        "rank": 8,
+        "model": "GPT-5.1",
+        "value": 0.5899463539882304
+      },
+      {
+        "rank": 9,
+        "model": "Qwen 3 4B",
+        "value": 0.4784216524319115
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.3895949575762076
+      }
+    ],
+    "pct_nonzero_variance": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 100.0
+      },
+      {
+        "rank": 2,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 94.94949494949495
+      },
+      {
+        "rank": 3,
+        "model": "GPT-5.1",
+        "value": 92.63157894736842
+      },
+      {
+        "rank": 4,
+        "model": "Claude Sonnet 4.5",
+        "value": 91.83673469387755
+      },
+      {
+        "rank": 5,
+        "model": "Llama 3.1 8B",
+        "value": 90.9090909090909
+      },
+      {
+        "rank": 6,
+        "model": "Mistral 7B",
+        "value": 90.81632653061224
+      },
+      {
+        "rank": 7,
+        "model": "GPT-4o",
+        "value": 89.47368421052632
+      },
+      {
+        "rank": 8,
+        "model": "Grok 4.3 (demographics)",
+        "value": 89.0
+      },
+      {
+        "rank": 9,
+        "model": "Qwen 3 4B",
+        "value": 70.0
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 69.0
+      }
+    ],
+    "pct_zero_var": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 0.0
+      },
+      {
+        "rank": 2,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 5.05050505050505
+      },
+      {
+        "rank": 3,
+        "model": "GPT-5.1",
+        "value": 7.368421052631578
+      },
+      {
+        "rank": 4,
+        "model": "Claude Sonnet 4.5",
+        "value": 8.16326530612245
+      },
+      {
+        "rank": 5,
+        "model": "Llama 3.1 8B",
+        "value": 9.090909090909092
+      },
+      {
+        "rank": 6,
+        "model": "Mistral 7B",
+        "value": 9.183673469387756
+      },
+      {
+        "rank": 7,
+        "model": "GPT-4o",
+        "value": 10.526315789473683
+      },
+      {
+        "rank": 8,
+        "model": "Grok 4.3 (demographics)",
+        "value": 11.0
+      },
+      {
+        "rank": 9,
+        "model": "Qwen 3 4B",
+        "value": 30.0
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 31.0
+      }
+    ],
+    "avg_kl_human_to_model": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 0.0
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 2.5325762701867665
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B",
+        "value": 5.0904351047173275
+      },
+      {
+        "rank": 4,
+        "model": "GPT-5.1",
+        "value": 6.0254068262592035
+      },
+      {
+        "rank": 5,
+        "model": "GPT-4o",
+        "value": 6.031266369646559
+      },
+      {
+        "rank": 6,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 6.120463669791912
+      },
+      {
+        "rank": 7,
+        "model": "Grok 4.3 (demographics)",
+        "value": 6.6178026775110155
+      },
+      {
+        "rank": 8,
+        "model": "Mistral 7B",
+        "value": 9.034436026156841
+      },
+      {
+        "rank": 9,
+        "model": "Grok 4.3 (name-only)",
+        "value": 9.74049502529117
+      },
+      {
+        "rank": 10,
+        "model": "Qwen 3 4B",
+        "value": 10.148696276946927
+      }
+    ],
+    "avg_js": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 0.0
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.1166604638396064
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B",
+        "value": 0.17089343116142727
+      },
+      {
+        "rank": 4,
+        "model": "GPT-5.1",
+        "value": 0.20664907249226536
+      },
+      {
+        "rank": 5,
+        "model": "GPT-4o",
+        "value": 0.20682486630493763
+      },
+      {
+        "rank": 6,
+        "model": "Qwen 3 4B",
+        "value": 0.22892777902536643
+      },
+      {
+        "rank": 7,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.23478701022729415
+      },
+      {
+        "rank": 8,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.2412779869177529
+      },
+      {
+        "rank": 9,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.25084530223752843
+      },
+      {
+        "rank": 10,
+        "model": "Mistral 7B",
+        "value": 0.3454220874367719
+      }
+    ],
+    "mantel_r_vs_human": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 1.0
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.2689688792445284
+      },
+      {
+        "rank": 3,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.18438529706240575
+      },
+      {
+        "rank": 4,
+        "model": "GPT-4o",
+        "value": 0.1530095701456239
+      },
+      {
+        "rank": 5,
+        "model": "GPT-5.1",
+        "value": 0.13370872622487512
+      },
+      {
+        "rank": 6,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.1327687315616554
+      },
+      {
+        "rank": 7,
+        "model": "Llama 3.1 8B",
+        "value": 0.10628355512253325
+      },
+      {
+        "rank": 8,
+        "model": "Mistral 7B",
+        "value": 0.09022966996660237
+      },
+      {
+        "rank": 9,
+        "model": "Qwen 3 4B",
+        "value": 0.06668192217541
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.04375524848944176
+      }
+    ],
+    "rv_vs_human": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 1.0
+      },
+      {
+        "rank": 2,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.5002054839592451
+      },
+      {
+        "rank": 3,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.47520060031141353
+      },
+      {
+        "rank": 4,
+        "model": "Qwen 3 4B",
+        "value": 0.47425891806716214
+      },
+      {
+        "rank": 5,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.4556059860736352
+      },
+      {
+        "rank": 6,
+        "model": "GPT-4o",
+        "value": 0.4479643104956985
+      },
+      {
+        "rank": 7,
+        "model": "GPT-5.1",
+        "value": 0.44392196659541416
+      },
+      {
+        "rank": 8,
+        "model": "Llama 3.1 8B",
+        "value": 0.42206641347558777
+      },
+      {
+        "rank": 9,
+        "model": "Mistral 7B",
+        "value": 0.42114448561441603
+      },
+      {
+        "rank": 10,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.4132631406668624
+      }
+    ],
+    "mean_abs_r": [
+      {
+        "rank": 1,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.14432978298275445
+      },
+      {
+        "rank": 2,
+        "model": "Human",
+        "value": 0.13252647965489375
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.12780020740297726
+      },
+      {
+        "rank": 4,
+        "model": "GPT-4o",
+        "value": 0.12041093762956676
+      },
+      {
+        "rank": 5,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.11839295594108647
+      },
+      {
+        "rank": 6,
+        "model": "GPT-5.1",
+        "value": 0.11631229927046792
+      },
+      {
+        "rank": 7,
+        "model": "Llama 3.1 8B",
+        "value": 0.11321995784301198
+      },
+      {
+        "rank": 8,
+        "model": "Mistral 7B",
+        "value": 0.1131371145846524
+      },
+      {
+        "rank": 9,
+        "model": "Qwen 3 4B",
+        "value": 0.10051856381856383
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.09685651787947361
+      }
+    ],
+    "avg_concentration": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 0.6158948136082981
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.7717906667743346
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.7792393712151212
+      },
+      {
+        "rank": 4,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.7974137566989655
+      },
+      {
+        "rank": 5,
+        "model": "Mistral 7B",
+        "value": 0.8038660134493032
+      },
+      {
+        "rank": 6,
+        "model": "Llama 3.1 8B",
+        "value": 0.8232803092477707
+      },
+      {
+        "rank": 7,
+        "model": "GPT-4o",
+        "value": 0.8392050958377623
+      },
+      {
+        "rank": 8,
+        "model": "GPT-5.1",
+        "value": 0.8414492197049404
+      },
+      {
+        "rank": 9,
+        "model": "Qwen 3 4B",
+        "value": 0.8592193418639466
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.8741080678072515
+      }
+    ],
+    "pct_usable": [
+      {
+        "rank": 1,
+        "model": "Grok 4.3 (demographics)",
+        "value": 76.0
+      },
+      {
+        "rank": 2,
+        "model": "Human",
+        "value": 69.0
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 65.65656565656566
+      },
+      {
+        "rank": 4,
+        "model": "Claude Sonnet 4.5",
+        "value": 65.3061224489796
+      },
+      {
+        "rank": 5,
+        "model": "Mistral 7B",
+        "value": 60.204081632653065
+      },
+      {
+        "rank": 6,
+        "model": "GPT-4o",
+        "value": 54.73684210526316
+      },
+      {
+        "rank": 7,
+        "model": "GPT-5.1",
+        "value": 52.631578947368425
+      },
+      {
+        "rank": 8,
+        "model": "Llama 3.1 8B",
+        "value": 50.505050505050505
+      },
+      {
+        "rank": 9,
+        "model": "Qwen 3 4B",
+        "value": 40.0
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 18.0
+      }
+    ],
+    "exact_match_rate": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 1.0
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.5904248806171176
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B",
+        "value": 0.47583518930957686
+      },
+      {
+        "rank": 4,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.47019023337909394
+      },
+      {
+        "rank": 5,
+        "model": "Qwen 3 4B",
+        "value": 0.4483778820648847
+      },
+      {
+        "rank": 6,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.4378482884112362
+      },
+      {
+        "rank": 7,
+        "model": "GPT-5.1",
+        "value": 0.43779935275080906
+      },
+      {
+        "rank": 8,
+        "model": "GPT-4o",
+        "value": 0.4377587991718426
+      },
+      {
+        "rank": 9,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.4266352386564526
+      },
+      {
+        "rank": 10,
+        "model": "Mistral 7B",
+        "value": 0.3083048919226394
+      }
+    ],
+    "within_0_25_rate": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 1.0
+      },
+      {
+        "rank": 2,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.8025102961364974
+      },
+      {
+        "rank": 3,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.7836414840210604
+      },
+      {
+        "rank": 4,
+        "model": "GPT-4o",
+        "value": 0.7560817805383023
+      },
+      {
+        "rank": 5,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.7557454331172657
+      },
+      {
+        "rank": 6,
+        "model": "GPT-5.1",
+        "value": 0.7553398058252427
+      },
+      {
+        "rank": 7,
+        "model": "Qwen 3 4B",
+        "value": 0.7404611303815548
+      },
+      {
+        "rank": 8,
+        "model": "Llama 3.1 8B",
+        "value": 0.7237193763919821
+      },
+      {
+        "rank": 9,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.6881610371886728
+      },
+      {
+        "rank": 10,
+        "model": "Mistral 7B",
+        "value": 0.5439135381114903
+      }
+    ],
+    "mean_per_q_pearson": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 1.0
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.09076114103956867
+      },
+      {
+        "rank": 3,
+        "model": "GPT-5.1",
+        "value": 0.0697134808017838
+      },
+      {
+        "rank": 4,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.06594117270468648
+      },
+      {
+        "rank": 5,
+        "model": "GPT-4o",
+        "value": 0.062202248898322515
+      },
+      {
+        "rank": 6,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.04099788346593342
+      },
+      {
+        "rank": 7,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.040369621938427906
+      },
+      {
+        "rank": 8,
+        "model": "Llama 3.1 8B",
+        "value": 0.028892463922990948
+      },
+      {
+        "rank": 9,
+        "model": "Mistral 7B",
+        "value": 0.028340092023871177
+      },
+      {
+        "rank": 10,
+        "model": "Qwen 3 4B",
+        "value": 0.028076640077054363
+      }
+    ],
+    "flattened_js": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 0.0
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.0038139181900762216
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B",
+        "value": 0.020773062074013995
+      },
+      {
+        "rank": 4,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.0406254979177275
+      },
+      {
+        "rank": 5,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.06413481989440838
+      },
+      {
+        "rank": 6,
+        "model": "Qwen 3 4B",
+        "value": 0.06588328506647662
+      },
+      {
+        "rank": 7,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.07668976993144747
+      },
+      {
+        "rank": 8,
+        "model": "GPT-4o",
+        "value": 0.07700653629164779
+      },
+      {
+        "rank": 9,
+        "model": "GPT-5.1",
+        "value": 0.07731174207792443
+      },
+      {
+        "rank": 10,
+        "model": "Mistral 7B",
+        "value": 0.13715949726601517
+      }
+    ],
+    "flattened_kl_human_to_model": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 0.0
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.029858396262377407
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B",
+        "value": 0.0728466797277495
+      },
+      {
+        "rank": 4,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.14433444542670115
+      },
+      {
+        "rank": 5,
+        "model": "Qwen 3 4B",
+        "value": 0.2460097872216389
+      },
+      {
+        "rank": 6,
+        "model": "GPT-4o",
+        "value": 0.29304010510327894
+      },
+      {
+        "rank": 7,
+        "model": "GPT-5.1",
+        "value": 0.2942753318887872
+      },
+      {
+        "rank": 8,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.3066023011005838
+      },
+      {
+        "rank": 9,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.38959542893867083
+      },
+      {
+        "rank": 10,
+        "model": "Mistral 7B",
+        "value": 0.4986684670925148
+      }
+    ],
+    "pearson_r": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 1.0
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.4254024419867746
+      },
+      {
+        "rank": 3,
+        "model": "GPT-4o",
+        "value": 0.36812492465004626
+      },
+      {
+        "rank": 4,
+        "model": "GPT-5.1",
+        "value": 0.3652592108582939
+      },
+      {
+        "rank": 5,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.33919068013301606
+      },
+      {
+        "rank": 6,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.3198028796057792
+      },
+      {
+        "rank": 7,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.25509161530088
+      },
+      {
+        "rank": 8,
+        "model": "Mistral 7B",
+        "value": 0.23299247768158035
+      },
+      {
+        "rank": 9,
+        "model": "Llama 3.1 8B",
+        "value": 0.2267906595156239
+      },
+      {
+        "rank": 10,
+        "model": "Qwen 3 4B",
+        "value": 0.20197118434573094
+      }
+    ],
+    "mae": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 0.0
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 0.22196819954870647
+      },
+      {
+        "rank": 3,
+        "model": "Grok 4.3 (name-only)",
+        "value": 0.23855331110675293
+      },
+      {
+        "rank": 4,
+        "model": "Grok 4.3 (demographics)",
+        "value": 0.2505614483074707
+      },
+      {
+        "rank": 5,
+        "model": "GPT-4o",
+        "value": 0.26267284087548065
+      },
+      {
+        "rank": 6,
+        "model": "GPT-5.1",
+        "value": 0.2631160425335182
+      },
+      {
+        "rank": 7,
+        "model": "Qwen 3 4B",
+        "value": 0.2785364502871135
+      },
+      {
+        "rank": 8,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 0.28980628530270286
+      },
+      {
+        "rank": 9,
+        "model": "Llama 3.1 8B",
+        "value": 0.29665155371725527
+      },
+      {
+        "rank": 10,
+        "model": "Mistral 7B",
+        "value": 0.3429963703342543
+      }
+    ]
+  },
+  "rankings_pipeline_internal": {
+    "quality_score_5a": [
+      {
+        "rank": 1,
+        "model": "Human",
+        "value": 49.01756669015944
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 4.5",
+        "value": 33.76029448907275
+      },
+      {
+        "rank": 3,
+        "model": "Llama 3.1 8B (FT)",
+        "value": 31.522783212665068
+      },
+      {
+        "rank": 4,
+        "model": "Mistral 7B",
+        "value": 29.853947223073945
+      },
+      {
+        "rank": 5,
+        "model": "Grok 4.3 (demographics)",
+        "value": 29.66173288100721
+      },
+      {
+        "rank": 6,
+        "model": "Llama 3.1 8B",
+        "value": 28.30223409832478
+      },
+      {
+        "rank": 7,
+        "model": "GPT-5.1",
+        "value": 26.505188378456385
+      },
+      {
+        "rank": 8,
+        "model": "GPT-4o",
+        "value": 26.43384118896609
+      },
+      {
+        "rank": 9,
+        "model": "Qwen 3 4B",
+        "value": 22.332984227136542
+      },
+      {
+        "rank": 10,
+        "model": "Grok 4.3 (name-only)",
+        "value": 18.613762249718512
+      }
+    ]
+  },
+  "paper_metrics_table": {
+    "Human": {
+      "mean_per_q_variance": 0.07112216391837375,
+      "var_ratio_vs_human": 1.0000000000000002,
+      "avg_entropy": 1.08903509087556,
+      "pct_nonzero_variance": 100.0,
+      "pct_zero_var": 0.0,
+      "avg_kl_human_to_model": 0.0,
+      "avg_js": 0.0,
+      "mantel_r_vs_human": 1.0,
+      "rv_vs_human": 1.0,
+      "mean_abs_r": 0.13252647965489375,
+      "pearson_r": 1.0,
+      "mae": 0.0
+    },
+    "GPT-5.1": {
+      "mean_per_q_variance": 0.019650669236909953,
+      "var_ratio_vs_human": 3.6193252789978594,
+      "avg_entropy": 0.5899463539882304,
+      "pct_nonzero_variance": 92.63157894736842,
+      "pct_zero_var": 7.368421052631578,
+      "avg_kl_human_to_model": 6.0254068262592035,
+      "avg_js": 0.20664907249226536,
+      "mantel_r_vs_human": 0.13370872622487512,
+      "rv_vs_human": 0.44392196659541416,
+      "mean_abs_r": 0.11631229927046792,
+      "pearson_r": 0.3652592108582939,
+      "mae": 0.2631160425335182
+    },
+    "Claude Sonnet 4.5": {
+      "mean_per_q_variance": 0.03995413052946319,
+      "var_ratio_vs_human": 1.7800953987955381,
+      "avg_entropy": 0.7658221649493618,
+      "pct_nonzero_variance": 91.83673469387755,
+      "pct_zero_var": 8.16326530612245,
+      "avg_kl_human_to_model": 2.5325762701867665,
+      "avg_js": 0.1166604638396064,
+      "mantel_r_vs_human": 0.2689688792445284,
+      "rv_vs_human": 0.4556059860736352,
+      "mean_abs_r": 0.14432978298275445,
+      "pearson_r": 0.4254024419867746,
+      "mae": 0.22196819954870647
+    },
+    "GPT-4o": {
+      "mean_per_q_variance": 0.01979618497909284,
+      "var_ratio_vs_human": 3.5927207183347374,
+      "avg_entropy": 0.5900076589329424,
+      "pct_nonzero_variance": 89.47368421052632,
+      "pct_zero_var": 10.526315789473683,
+      "avg_kl_human_to_model": 6.031266369646559,
+      "avg_js": 0.20682486630493763,
+      "mantel_r_vs_human": 0.1530095701456239,
+      "rv_vs_human": 0.4479643104956985,
+      "mean_abs_r": 0.12041093762956676,
+      "pearson_r": 0.36812492465004626,
+      "mae": 0.26267284087548065
+    },
+    "Llama 3.1 8B": {
+      "mean_per_q_variance": 0.02553647300165039,
+      "var_ratio_vs_human": 2.785120870598584,
+      "avg_entropy": 0.6112960741472988,
+      "pct_nonzero_variance": 90.9090909090909,
+      "pct_zero_var": 9.090909090909092,
+      "avg_kl_human_to_model": 5.0904351047173275,
+      "avg_js": 0.17089343116142727,
+      "mantel_r_vs_human": 0.10628355512253325,
+      "rv_vs_human": 0.42206641347558777,
+      "mean_abs_r": 0.11321995784301198,
+      "pearson_r": 0.2267906595156239,
+      "mae": 0.29665155371725527
+    },
+    "Llama 3.1 8B (FT)": {
+      "mean_per_q_variance": 0.020702321444357845,
+      "var_ratio_vs_human": 3.435468051712491,
+      "avg_entropy": 0.7364425427913461,
+      "pct_nonzero_variance": 94.94949494949495,
+      "pct_zero_var": 5.05050505050505,
+      "avg_kl_human_to_model": 6.120463669791912,
+      "avg_js": 0.2412779869177529,
+      "mantel_r_vs_human": 0.1327687315616554,
+      "rv_vs_human": 0.4132631406668624,
+      "mean_abs_r": 0.12780020740297726,
+      "pearson_r": 0.25509161530088,
+      "mae": 0.28980628530270286
+    },
+    "Mistral 7B": {
+      "mean_per_q_variance": 0.02780270262071823,
+      "var_ratio_vs_human": 2.558102530125054,
+      "avg_entropy": 0.6641049939724913,
+      "pct_nonzero_variance": 90.81632653061224,
+      "pct_zero_var": 9.183673469387756,
+      "avg_kl_human_to_model": 9.034436026156841,
+      "avg_js": 0.3454220874367719,
+      "mantel_r_vs_human": 0.09022966996660237,
+      "rv_vs_human": 0.42114448561441603,
+      "mean_abs_r": 0.1131371145846524,
+      "pearson_r": 0.23299247768158035,
+      "mae": 0.3429963703342543
+    },
+    "Qwen 3 4B": {
+      "mean_per_q_variance": 0.027623352893261503,
+      "var_ratio_vs_human": 2.5747114839098137,
+      "avg_entropy": 0.4784216524319115,
+      "pct_nonzero_variance": 70.0,
+      "pct_zero_var": 30.0,
+      "avg_kl_human_to_model": 10.148696276946927,
+      "avg_js": 0.22892777902536643,
+      "mantel_r_vs_human": 0.06668192217541,
+      "rv_vs_human": 0.47425891806716214,
+      "mean_abs_r": 0.10051856381856383,
+      "pearson_r": 0.20197118434573094,
+      "mae": 0.2785364502871135
+    },
+    "Grok 4.3 (demographics)": {
+      "mean_per_q_variance": 0.01597726364015799,
+      "var_ratio_vs_human": 4.4514608709098376,
+      "avg_entropy": 0.7095551338636468,
+      "pct_nonzero_variance": 89.0,
+      "pct_zero_var": 11.0,
+      "avg_kl_human_to_model": 6.6178026775110155,
+      "avg_js": 0.25084530223752843,
+      "mantel_r_vs_human": 0.18438529706240575,
+      "rv_vs_human": 0.47520060031141353,
+      "mean_abs_r": 0.11839295594108647,
+      "pearson_r": 0.3198028796057792,
+      "mae": 0.2505614483074707
+    },
+    "Grok 4.3 (name-only)": {
+      "mean_per_q_variance": 0.00949212090966962,
+      "var_ratio_vs_human": 7.492757898387245,
+      "avg_entropy": 0.3895949575762076,
+      "pct_nonzero_variance": 69.0,
+      "pct_zero_var": 31.0,
+      "avg_kl_human_to_model": 9.74049502529117,
+      "avg_js": 0.23478701022729415,
+      "mantel_r_vs_human": 0.04375524848944176,
+      "rv_vs_human": 0.5002054839592451,
+      "mean_abs_r": 0.09685651787947361,
+      "pearson_r": 0.33919068013301606,
+      "mae": 0.23855331110675293
+    }
+  },
+  "takeaways": {
+    "prompting": "Prompts match paper demographic template; not a prompt bug.",
+    "paper_metrics_grok_demo_vs_gpt51": {
+      "mean_per_q_variance": {
+        "grok_demo": 0.01597726364015799,
+        "gpt51": 0.019650669236909953,
+        "note": "higher better (closer to human)"
+      },
+      "var_ratio_vs_human": {
+        "grok_demo": 4.4514608709098376,
+        "gpt51": 3.6193252789978594,
+        "note": "lower better (less collapse)"
+      },
+      "avg_entropy": {
+        "grok_demo": 0.7095551338636468,
+        "gpt51": 0.5899463539882304,
+        "note": "higher better"
+      },
+      "pct_zero_var": {
+        "grok_demo": 11.0,
+        "gpt51": 7.368421052631578,
+        "note": "lower better"
+      },
+      "avg_js": {
+        "grok_demo": 0.25084530223752843,
+        "gpt51": 0.20664907249226536,
+        "note": "lower better"
+      },
+      "avg_kl_human_to_model": {
+        "grok_demo": 6.6178026775110155,
+        "gpt51": 6.0254068262592035,
+        "note": "lower better"
+      },
+      "mantel_r_vs_human": {
+        "grok_demo": 0.18438529706240575,
+        "gpt51": 0.13370872622487512,
+        "note": "higher better"
+      },
+      "rv_vs_human": {
+        "grok_demo": 0.47520060031141353,
+        "gpt51": 0.44392196659541416,
+        "note": "higher better"
+      },
+      "mean_abs_r": {
+        "grok_demo": 0.11839295594108647,
+        "gpt51": 0.11631229927046792,
+        "note": "element-wise |r|; compare to human 0.133"
+      }
+    },
+    "variance": {
+      "grok_demo": 0.01597726364015799,
+      "grok_name": 0.00949212090966962,
+      "gpt51": 0.019650669236909953,
+      "claude": 0.03995413052946319,
+      "human": 0.07112216391837375
+    },
+    "human_agreement_secondary_not_paper_table": {
+      "grok_demo_pearson": 0.3198028796057792,
+      "grok_demo_mae": 0.2505614483074707,
+      "gpt51_pearson": 0.3652592108582939,
+      "gpt51_mae": 0.2631160425335182,
+      "claude_pearson": 0.4254024419867746
+    },
+    "pipeline_internal_not_paper": {
+      "quality_score_5a": {
+        "grok_demo": 29.66173288100721,
+        "grok_name": 18.613762249718512,
+        "gpt51": 26.505188378456385,
+        "claude": 33.76029448907275,
+        "human": 49.01756669015944,
+        "note": "pipeline-internal only"
+      }
+    },
+    "suggested_improvements": [
+      "Re-run with reasoning enabled (Grok 4.3 is a reasoning model).",
+      "Strip phd_country==Unknown instead of injecting (Unknown).",
+      "Optional hybrid: demographics AND philosopher name.",
+      "Judge vs GPT-5.1 on paper metrics (Per-Q Var, entropy, KL/JS, Mantel/RV), not quality_score."
+    ]
+  }
+}

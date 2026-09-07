@@ -1,0 +1,11 @@
+{
+  "persona": "full demographics from private merged survey (not in git)",
+  "private_file_committed": false,
+  "human_responses_in_prompts": false,
+  "n_cells_target": 27700,
+  "n_cells_completed": 27700,
+  "n_success": 27700,
+  "mean_per_question_variance_demographics": 0.015977263640157988,
+  "mean_per_question_variance_name_only": 0.00949212090966962,
+  "output_dir": "/tmp/grok43_demo_full"
+}

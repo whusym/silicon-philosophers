@@ -1,0 +1,235 @@
+{
+  "model": "x-ai/grok-4.3",
+  "eval_notes": {
+    "persona": "full demographics from private merged survey file (responses stripped; file not in git)",
+    "n_philosophers": 277,
+    "n_questions": 100,
+    "n_cells": 27700,
+    "n_success": 27700,
+    "reasoning_enabled": false,
+    "max_tokens": 256,
+    "via": "OpenRouter batch API",
+    "private_file_committed": false
+  },
+  "demographics_run": {
+    "label": "Grok 4.3 (demographics)",
+    "n_rows": 27700,
+    "n_success": 27700,
+    "n_scored": 27668,
+    "mean_per_question_variance": 0.015977263640157988,
+    "median_per_question_variance": 0.010541157841233433,
+    "score_distribution": {
+      "mean": 0.7348019372560358,
+      "stdev": 0.2653747282087038,
+      "bucket_counts": {
+        "0.0": 417,
+        "0.25": 3314,
+        "0.5": 4036,
+        "0.75": 9668,
+        "1.0": 10233
+      }
+    },
+    "persona_sensitivity": {
+      "mean_modal_score_share_per_question": 0.7974137566989657,
+      "median_modal_score_share_per_question": 0.851985559566787,
+      "n_questions_zero_var": 11,
+      "n_questions_var_lt_0.01": 49
+    }
+  },
+  "name_only_run": {
+    "label": "Grok 4.3 (name-only)",
+    "n_rows": 27700,
+    "n_success": 27700,
+    "n_scored": 27699,
+    "mean_per_question_variance": 0.00949212090966962,
+    "median_per_question_variance": 0.0029991919613184064,
+    "score_distribution": {
+      "mean": 0.7862828982995776,
+      "stdev": 0.2726961288950674,
+      "bucket_counts": {
+        "0.0": 549,
+        "0.25": 3645,
+        "0.5": 531,
+        "0.75": 9486,
+        "1.0": 13488
+      }
+    },
+    "persona_sensitivity": {
+      "mean_modal_score_share_per_question": 0.8741080678072517,
+      "median_modal_score_share_per_question": 0.9548736462093863,
+      "n_questions_zero_var": 31,
+      "n_questions_var_lt_0.01": 64
+    }
+  },
+  "delta_mean_var_demographics_minus_name_only": 0.006485142730488367,
+  "paper_mean_per_q_var": {
+    "Human": 0.07112216391837375,
+    "GPT-5.1": 0.019650669236909953,
+    "Claude Sonnet 4.5": 0.03995413052946319,
+    "Llama 3.1 8B": 0.02553647300165039,
+    "Llama 3.1 8B (FT)": 0.020702321444357845,
+    "Mistral 7B": 0.02780270262071823,
+    "GPT-4o": 0.01979618497909284,
+    "Qwen 3 4B": 0.027623352893261503
+  },
+  "variance_ranking_high_to_low": [
+    {
+      "model": "Human",
+      "mean_per_q_var": 0.07112216391837375,
+      "ratio_vs_human": 1.0
+    },
+    {
+      "model": "Claude Sonnet 4.5",
+      "mean_per_q_var": 0.03995413052946319,
+      "ratio_vs_human": 1.780095398795538
+    },
+    {
+      "model": "Mistral 7B",
+      "mean_per_q_var": 0.02780270262071823,
+      "ratio_vs_human": 2.5581025301250535
+    },
+    {
+      "model": "Qwen 3 4B",
+      "mean_per_q_var": 0.027623352893261503,
+      "ratio_vs_human": 2.5747114839098133
+    },
+    {
+      "model": "Llama 3.1 8B",
+      "mean_per_q_var": 0.02553647300165039,
+      "ratio_vs_human": 2.7851208705985835
+    },
+    {
+      "model": "Llama 3.1 8B (FT)",
+      "mean_per_q_var": 0.020702321444357845,
+      "ratio_vs_human": 3.4354680517124905
+    },
+    {
+      "model": "GPT-4o",
+      "mean_per_q_var": 0.01979618497909284,
+      "ratio_vs_human": 3.592720718334737
+    },
+    {
+      "model": "GPT-5.1",
+      "mean_per_q_var": 0.019650669236909953,
+      "ratio_vs_human": 3.619325278997859
+    },
+    {
+      "model": "Grok 4.3 (demographics)",
+      "mean_per_q_var": 0.015977263640157988,
+      "ratio_vs_human": 4.4514608709098376
+    },
+    {
+      "model": "Grok 4.3 (name-only)",
+      "mean_per_q_var": 0.00949212090966962,
+      "ratio_vs_human": 7.492757898387243
+    }
+  ],
+  "interpretation": {
+    "headline": "With full demographics, Grok 4.3 mean per-question variance is 0.0160 vs name-only 0.0095 (\u0394=+0.0065).",
+    "caveat": "Demographics run uses private survey merge locally; human responses were stripped from prompts and the private file was not committed."
+  },
+  "highest_variance_questions_demographics": [
+    {
+      "question": "consciousness: functionalism",
+      "var": 0.06076092481330397,
+      "mean_score": 0.48736462093862815
+    },
+    {
+      "question": "morality: non-naturalism realism",
+      "var": 0.05805497269611229,
+      "mean_score": 0.5776173285198556
+    },
+    {
+      "question": "mind uploading: survival",
+      "var": 0.057743812639288926,
+      "mean_score": 0.47833935018050544
+    },
+    {
+      "question": "continuum hypothesis: indeterminate",
+      "var": 0.05282227058869528,
+      "mean_score": 0.8483754512635379
+    },
+    {
+      "question": "mind: physicalism",
+      "var": 0.04857680928983826,
+      "mean_score": 0.7373646209386282
+    },
+    {
+      "question": "principle of sufficient reason: true",
+      "var": 0.04705033299013411,
+      "mean_score": 0.674187725631769
+    },
+    {
+      "question": "proper names: Fregean",
+      "var": 0.04269572130485214,
+      "mean_score": 0.37725631768953066
+    },
+    {
+      "question": "capital punishment: permissible",
+      "var": 0.04201845444059977,
+      "mean_score": 0.31176470588235294
+    },
+    {
+      "question": "kant: two worlds",
+      "var": 0.041760612024136896,
+      "mean_score": 0.3528880866425993
+    },
+    {
+      "question": "political philosophy: egalitarianism",
+      "var": 0.04110408059534205,
+      "mean_score": 0.6588447653429603
+    }
+  ],
+  "lowest_variance_questions_demographics": [
+    {
+      "question": "aim of philosophy: understanding",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "analysis of knowledge: justified true belief",
+      "var": 0.0,
+      "mean_score": 0.25
+    },
+    {
+      "question": "external world: non-skeptical realism",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "normative concepts: reasons",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "other minds: adult humans",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "ought implies can: yes",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "philosophical knowledge: a little",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "philosophical progress: a little",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "race categories: revise",
+      "var": 0.0,
+      "mean_score": 1.0
+    },
+    {
+      "question": "trolley problem: switch",
+      "var": 0.0,
+      "mean_score": 1.0
+    }
+  ]
+}

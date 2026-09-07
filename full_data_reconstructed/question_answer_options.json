@@ -1,0 +1,802 @@
+{
+  "a priori knowledge: yes": [
+    "Accept: yes",
+    "Lean towards: yes",
+    "Neutral towards: yes",
+    "Lean against: yes",
+    "Reject: yes",
+    "Agnostic/undecided"
+  ],
+  "abortion: permissible": [
+    "Accept: permissible",
+    "Lean towards: permissible",
+    "Neutral towards: permissible",
+    "Lean against: permissible",
+    "Reject: permissible",
+    "Agnostic/undecided"
+  ],
+  "abstract objects: nominalism": [
+    "Accept: nominalism",
+    "Lean towards: nominalism",
+    "Neutral towards: nominalism",
+    "Lean against: nominalism",
+    "Reject: nominalism",
+    "Agnostic/undecided"
+  ],
+  "aesthetic experience: sui generis": [
+    "Accept: sui generis",
+    "Lean towards: sui generis",
+    "Neutral towards: sui generis",
+    "Lean against: sui generis",
+    "Reject: sui generis",
+    "Agnostic/undecided"
+  ],
+  "aesthetic value: subjective": [
+    "Accept: subjective",
+    "Lean towards: subjective",
+    "Neutral towards: subjective",
+    "Lean against: subjective",
+    "Reject: subjective",
+    "Agnostic/undecided"
+  ],
+  "aim of philosophy: understanding": [
+    "Accept: understanding",
+    "Lean towards: understanding",
+    "Neutral towards: understanding",
+    "Lean against: understanding",
+    "Reject: understanding",
+    "Agnostic/undecided"
+  ],
+  "analysis of knowledge: justified true belief": [
+    "Accept: justified true belief",
+    "Lean towards: justified true belief",
+    "Neutral towards: justified true belief",
+    "Lean against: justified true belief",
+    "Reject: justified true belief",
+    "Agnostic/undecided"
+  ],
+  "analytic-synthetic distinction: yes": [
+    "Accept: yes",
+    "Lean towards: yes",
+    "Neutral towards: yes",
+    "Lean against: yes",
+    "Reject: yes",
+    "Agnostic/undecided"
+  ],
+  "arguments for theism: cosmological": [
+    "Accept: cosmological",
+    "Lean towards: cosmological",
+    "Neutral towards: cosmological",
+    "Lean against: cosmological",
+    "Reject: cosmological",
+    "Agnostic/undecided"
+  ],
+  "belief or credence: credence": [
+    "Accept: credence",
+    "Lean towards: credence",
+    "Neutral towards: credence",
+    "Lean against: credence",
+    "Reject: credence",
+    "Agnostic/undecided"
+  ],
+  "capital punishment: permissible": [
+    "Accept: permissible",
+    "Lean towards: permissible",
+    "Neutral towards: permissible",
+    "Lean against: permissible",
+    "Reject: permissible",
+    "Agnostic/undecided"
+  ],
+  "causation: counterfactual/difference-making": [
+    "Accept: counterfactual/difference-making",
+    "Lean towards: counterfactual/difference-making",
+    "Neutral towards: counterfactual/difference-making",
+    "Lean against: counterfactual/difference-making",
+    "Reject: counterfactual/difference-making",
+    "Agnostic/undecided"
+  ],
+  "chinese room: doesn't understand": [
+    "Accept: doesn't understand",
+    "Lean towards: doesn't understand",
+    "Neutral towards: doesn't understand",
+    "Lean against: doesn't understand",
+    "Reject: doesn't understand",
+    "Agnostic/undecided"
+  ],
+  "concepts: empiricism": [
+    "Accept: empiricism",
+    "Lean towards: empiricism",
+    "Neutral towards: empiricism",
+    "Lean against: empiricism",
+    "Reject: empiricism",
+    "Agnostic/undecided"
+  ],
+  "consciousness: functionalism": [
+    "Accept: functionalism",
+    "Lean towards: functionalism",
+    "Neutral towards: functionalism",
+    "Lean against: functionalism",
+    "Reject: functionalism",
+    "Agnostic/undecided"
+  ],
+  "continuum hypothesis: indeterminate": [
+    "Accept: indeterminate",
+    "Lean towards: indeterminate",
+    "Neutral towards: indeterminate",
+    "Lean against: indeterminate",
+    "Reject: indeterminate",
+    "Agnostic/undecided"
+  ],
+  "cosmological fine-tuning: multiverse": [
+    "Accept: multiverse",
+    "Lean towards: multiverse",
+    "Neutral towards: multiverse",
+    "Lean against: multiverse",
+    "Reject: multiverse",
+    "Agnostic/undecided"
+  ],
+  "eating animals and animal products: vegetarianism": [
+    "Accept: vegetarianism",
+    "Lean towards: vegetarianism",
+    "Neutral towards: vegetarianism",
+    "Lean against: vegetarianism",
+    "Reject: vegetarianism",
+    "Agnostic/undecided"
+  ],
+  "environmental ethics: anthropocentric": [
+    "Accept: anthropocentric",
+    "Lean towards: anthropocentric",
+    "Neutral towards: anthropocentric",
+    "Lean against: anthropocentric",
+    "Reject: anthropocentric",
+    "Agnostic/undecided"
+  ],
+  "epistemic justification: externalism": [
+    "Accept: externalism",
+    "Lean towards: externalism",
+    "Neutral towards: externalism",
+    "Lean against: externalism",
+    "Reject: externalism",
+    "Agnostic/undecided"
+  ],
+  "experience machine: yes": [
+    "Accept: yes",
+    "Lean towards: yes",
+    "Neutral towards: yes",
+    "Lean against: yes",
+    "Reject: yes",
+    "Agnostic/undecided"
+  ],
+  "extended mind: yes": [
+    "Accept: yes",
+    "Lean towards: yes",
+    "Neutral towards: yes",
+    "Lean against: yes",
+    "Reject: yes",
+    "Agnostic/undecided"
+  ],
+  "external world: non-skeptical realism": [
+    "Accept: non-skeptical realism",
+    "Lean towards: non-skeptical realism",
+    "Neutral towards: non-skeptical realism",
+    "Lean against: non-skeptical realism",
+    "Reject: non-skeptical realism",
+    "Agnostic/undecided"
+  ],
+  "footbridge: push": [
+    "Accept: push",
+    "Lean towards: push",
+    "Neutral towards: push",
+    "Lean against: push",
+    "Reject: push",
+    "Agnostic/undecided"
+  ],
+  "foundations of mathematics: set-theoretic": [
+    "Accept: set-theoretic",
+    "Lean towards: set-theoretic",
+    "Neutral towards: set-theoretic",
+    "Lean against: set-theoretic",
+    "Reject: set-theoretic",
+    "Agnostic/undecided"
+  ],
+  "free will: compatibilism": [
+    "Accept: compatibilism",
+    "Lean towards: compatibilism",
+    "Neutral towards: compatibilism",
+    "Lean against: compatibilism",
+    "Reject: compatibilism",
+    "Agnostic/undecided"
+  ],
+  "gender categories: revise": [
+    "Accept: revise",
+    "Lean towards: revise",
+    "Neutral towards: revise",
+    "Lean against: revise",
+    "Reject: revise",
+    "Agnostic/undecided"
+  ],
+  "gender: social": [
+    "Accept: social",
+    "Lean towards: social",
+    "Neutral towards: social",
+    "Lean against: social",
+    "Reject: social",
+    "Agnostic/undecided"
+  ],
+  "god: atheism": [
+    "Accept: atheism",
+    "Lean towards: atheism",
+    "Neutral towards: atheism",
+    "Lean against: atheism",
+    "Reject: atheism",
+    "Agnostic/undecided"
+  ],
+  "grounds of intentionality: phenomenal": [
+    "Accept: phenomenal",
+    "Lean towards: phenomenal",
+    "Neutral towards: phenomenal",
+    "Lean against: phenomenal",
+    "Reject: phenomenal",
+    "Agnostic/undecided"
+  ],
+  "hard problem of consciousness: yes": [
+    "Accept: yes",
+    "Lean towards: yes",
+    "Neutral towards: yes",
+    "Lean against: yes",
+    "Reject: yes",
+    "Agnostic/undecided"
+  ],
+  "human genetic engineering: permissible": [
+    "Accept: permissible",
+    "Lean towards: permissible",
+    "Neutral towards: permissible",
+    "Lean against: permissible",
+    "Reject: permissible",
+    "Agnostic/undecided"
+  ],
+  "hume: skeptic": [
+    "Accept: skeptic",
+    "Lean towards: skeptic",
+    "Neutral towards: skeptic",
+    "Lean against: skeptic",
+    "Reject: skeptic",
+    "Agnostic/undecided"
+  ],
+  "immortality: yes": [
+    "Accept: yes",
+    "Lean towards: yes",
+    "Neutral towards: yes",
+    "Lean against: yes",
+    "Reject: yes",
+    "Agnostic/undecided"
+  ],
+  "interlevel metaphysics: supervenience": [
+    "Accept: supervenience",
+    "Lean towards: supervenience",
+    "Neutral towards: supervenience",
+    "Lean against: supervenience",
+    "Reject: supervenience",
+    "Agnostic/undecided"
+  ],
+  "justification: reliabilism": [
+    "Accept: reliabilism",
+    "Lean towards: reliabilism",
+    "Neutral towards: reliabilism",
+    "Lean against: reliabilism",
+    "Reject: reliabilism",
+    "Agnostic/undecided"
+  ],
+  "kant: two worlds": [
+    "Accept: two worlds",
+    "Lean towards: two worlds",
+    "Neutral towards: two worlds",
+    "Lean against: two worlds",
+    "Reject: two worlds",
+    "Agnostic/undecided"
+  ],
+  "knowledge claims: contextualism": [
+    "Accept: contextualism",
+    "Lean towards: contextualism",
+    "Neutral towards: contextualism",
+    "Lean against: contextualism",
+    "Reject: contextualism",
+    "Agnostic/undecided"
+  ],
+  "knowledge: empiricism": [
+    "Accept: empiricism",
+    "Lean towards: empiricism",
+    "Neutral towards: empiricism",
+    "Lean against: empiricism",
+    "Reject: empiricism",
+    "Agnostic/undecided"
+  ],
+  "law: legal positivism": [
+    "Accept: legal positivism",
+    "Lean towards: legal positivism",
+    "Neutral towards: legal positivism",
+    "Lean against: legal positivism",
+    "Reject: legal positivism",
+    "Agnostic/undecided"
+  ],
+  "laws of nature: Humean": [
+    "Accept: Humean",
+    "Lean towards: Humean",
+    "Neutral towards: Humean",
+    "Lean against: Humean",
+    "Reject: Humean",
+    "Agnostic/undecided"
+  ],
+  "logic: classical": [
+    "Accept: classical",
+    "Lean towards: classical",
+    "Neutral towards: classical",
+    "Lean against: classical",
+    "Reject: classical",
+    "Agnostic/undecided"
+  ],
+  "material composition: restrictivism": [
+    "Accept: restrictivism",
+    "Lean towards: restrictivism",
+    "Neutral towards: restrictivism",
+    "Lean against: restrictivism",
+    "Reject: restrictivism",
+    "Agnostic/undecided"
+  ],
+  "meaning of life: subjective": [
+    "Accept: subjective",
+    "Lean towards: subjective",
+    "Neutral towards: subjective",
+    "Lean against: subjective",
+    "Reject: subjective",
+    "Agnostic/undecided"
+  ],
+  "mental content: externalism": [
+    "Accept: externalism",
+    "Lean towards: externalism",
+    "Neutral towards: externalism",
+    "Lean against: externalism",
+    "Reject: externalism",
+    "Agnostic/undecided"
+  ],
+  "meta-ethics: moral realism": [
+    "Accept: moral realism",
+    "Lean towards: moral realism",
+    "Neutral towards: moral realism",
+    "Lean against: moral realism",
+    "Reject: moral realism",
+    "Agnostic/undecided"
+  ],
+  "metaontology: heavyweight realism": [
+    "Accept: heavyweight realism",
+    "Lean towards: heavyweight realism",
+    "Neutral towards: heavyweight realism",
+    "Lean against: heavyweight realism",
+    "Reject: heavyweight realism",
+    "Agnostic/undecided"
+  ],
+  "metaphilosophy: naturalism": [
+    "Accept: naturalism",
+    "Lean towards: naturalism",
+    "Neutral towards: naturalism",
+    "Lean against: naturalism",
+    "Reject: naturalism",
+    "Agnostic/undecided"
+  ],
+  "method in history of philosophy: contextual/historicist": [
+    "Accept: contextual/historicist",
+    "Lean towards: contextual/historicist",
+    "Neutral towards: contextual/historicist",
+    "Lean against: contextual/historicist",
+    "Reject: contextual/historicist",
+    "Agnostic/undecided"
+  ],
+  "method in political philosophy: ideal theory": [
+    "Accept: ideal theory",
+    "Lean towards: ideal theory",
+    "Neutral towards: ideal theory",
+    "Lean against: ideal theory",
+    "Reject: ideal theory",
+    "Agnostic/undecided"
+  ],
+  "mind uploading: survival": [
+    "Accept: survival",
+    "Lean towards: survival",
+    "Neutral towards: survival",
+    "Lean against: survival",
+    "Reject: survival",
+    "Agnostic/undecided"
+  ],
+  "mind: physicalism": [
+    "Accept: physicalism",
+    "Lean towards: physicalism",
+    "Neutral towards: physicalism",
+    "Lean against: physicalism",
+    "Reject: physicalism",
+    "Agnostic/undecided"
+  ],
+  "moral judgment: cognitivism": [
+    "Accept: cognitivism",
+    "Lean towards: cognitivism",
+    "Neutral towards: cognitivism",
+    "Lean against: cognitivism",
+    "Reject: cognitivism",
+    "Agnostic/undecided"
+  ],
+  "moral motivation: externalism": [
+    "Accept: externalism",
+    "Lean towards: externalism",
+    "Neutral towards: externalism",
+    "Lean against: externalism",
+    "Reject: externalism",
+    "Agnostic/undecided"
+  ],
+  "moral principles: moral generalism": [
+    "Accept: moral generalism",
+    "Lean towards: moral generalism",
+    "Neutral towards: moral generalism",
+    "Lean against: moral generalism",
+    "Reject: moral generalism",
+    "Agnostic/undecided"
+  ],
+  "morality: non-naturalism realism": [
+    "Accept: non-naturalism realism",
+    "Lean towards: non-naturalism realism",
+    "Neutral towards: non-naturalism realism",
+    "Lean against: non-naturalism realism",
+    "Reject: non-naturalism realism",
+    "Agnostic/undecided"
+  ],
+  "newcomb's problem: one box": [
+    "Accept: one box",
+    "Lean towards: one box",
+    "Neutral towards: one box",
+    "Lean against: one box",
+    "Reject: one box",
+    "Agnostic/undecided"
+  ],
+  "normative concepts: reasons": [
+    "Accept: reasons",
+    "Lean towards: reasons",
+    "Neutral towards: reasons",
+    "Lean against: reasons",
+    "Reject: reasons",
+    "Agnostic/undecided"
+  ],
+  "normative ethics: virtue ethics": [
+    "Accept: virtue ethics",
+    "Lean towards: virtue ethics",
+    "Neutral towards: virtue ethics",
+    "Lean against: virtue ethics",
+    "Reject: virtue ethics",
+    "Agnostic/undecided"
+  ],
+  "other minds: adult humans": [
+    "Accept: adult humans",
+    "Lean towards: adult humans",
+    "Neutral towards: adult humans",
+    "Lean against: adult humans",
+    "Reject: adult humans",
+    "Agnostic/undecided"
+  ],
+  "ought implies can: yes": [
+    "Accept: yes",
+    "Lean towards: yes",
+    "Neutral towards: yes",
+    "Lean against: yes",
+    "Reject: yes",
+    "Agnostic/undecided"
+  ],
+  "perceptual experience: representationalism": [
+    "Accept: representationalism",
+    "Lean towards: representationalism",
+    "Neutral towards: representationalism",
+    "Lean against: representationalism",
+    "Reject: representationalism",
+    "Agnostic/undecided"
+  ],
+  "personal identity: psychological view": [
+    "Accept: psychological view",
+    "Lean towards: psychological view",
+    "Neutral towards: psychological view",
+    "Lean against: psychological view",
+    "Reject: psychological view",
+    "Agnostic/undecided"
+  ],
+  "philosophical knowledge: a little": [
+    "Accept: a little",
+    "Lean towards: a little",
+    "Neutral towards: a little",
+    "Lean against: a little",
+    "Reject: a little",
+    "Agnostic/undecided"
+  ],
+  "philosophical methods: conceptual analysis": [
+    "Accept: conceptual analysis",
+    "Lean towards: conceptual analysis",
+    "Neutral towards: conceptual analysis",
+    "Lean against: conceptual analysis",
+    "Reject: conceptual analysis",
+    "Agnostic/undecided"
+  ],
+  "philosophical progress: a little": [
+    "Accept: a little",
+    "Lean towards: a little",
+    "Neutral towards: a little",
+    "Lean against: a little",
+    "Reject: a little",
+    "Agnostic/undecided"
+  ],
+  "plato: knowledge only of forms": [
+    "Accept: knowledge only of forms",
+    "Lean towards: knowledge only of forms",
+    "Neutral towards: knowledge only of forms",
+    "Lean against: knowledge only of forms",
+    "Reject: knowledge only of forms",
+    "Agnostic/undecided"
+  ],
+  "political philosophy: egalitarianism": [
+    "Accept: egalitarianism",
+    "Lean towards: egalitarianism",
+    "Neutral towards: egalitarianism",
+    "Lean against: egalitarianism",
+    "Reject: egalitarianism",
+    "Agnostic/undecided"
+  ],
+  "politics: socialism": [
+    "Accept: socialism",
+    "Lean towards: socialism",
+    "Neutral towards: socialism",
+    "Lean against: socialism",
+    "Reject: socialism",
+    "Agnostic/undecided"
+  ],
+  "possible worlds: abstract": [
+    "Accept: abstract",
+    "Lean towards: abstract",
+    "Neutral towards: abstract",
+    "Lean against: abstract",
+    "Reject: abstract",
+    "Agnostic/undecided"
+  ],
+  "practical reason: Kantian": [
+    "Accept: Kantian",
+    "Lean towards: Kantian",
+    "Neutral towards: Kantian",
+    "Lean against: Kantian",
+    "Reject: Kantian",
+    "Agnostic/undecided"
+  ],
+  "principle of sufficient reason: true": [
+    "Accept: true",
+    "Lean towards: true",
+    "Neutral towards: true",
+    "Lean against: true",
+    "Reject: true",
+    "Agnostic/undecided"
+  ],
+  "proper names: Fregean": [
+    "Accept: Fregean",
+    "Lean towards: Fregean",
+    "Neutral towards: Fregean",
+    "Lean against: Fregean",
+    "Reject: Fregean",
+    "Agnostic/undecided"
+  ],
+  "properties: immanent universals": [
+    "Accept: immanent universals",
+    "Lean towards: immanent universals",
+    "Neutral towards: immanent universals",
+    "Lean against: immanent universals",
+    "Reject: immanent universals",
+    "Agnostic/undecided"
+  ],
+  "propositional attitudes: representational": [
+    "Accept: representational",
+    "Lean towards: representational",
+    "Neutral towards: representational",
+    "Lean against: representational",
+    "Reject: representational",
+    "Agnostic/undecided"
+  ],
+  "propositions: structured entities": [
+    "Accept: structured entities",
+    "Lean towards: structured entities",
+    "Neutral towards: structured entities",
+    "Lean against: structured entities",
+    "Reject: structured entities",
+    "Agnostic/undecided"
+  ],
+  "quantum mechanics: many-worlds": [
+    "Accept: many-worlds",
+    "Lean towards: many-worlds",
+    "Neutral towards: many-worlds",
+    "Lean against: many-worlds",
+    "Reject: many-worlds",
+    "Agnostic/undecided"
+  ],
+  "race categories: revise": [
+    "Accept: revise",
+    "Lean towards: revise",
+    "Neutral towards: revise",
+    "Lean against: revise",
+    "Reject: revise",
+    "Agnostic/undecided"
+  ],
+  "race: social": [
+    "Accept: social",
+    "Lean towards: social",
+    "Neutral towards: social",
+    "Lean against: social",
+    "Reject: social",
+    "Agnostic/undecided"
+  ],
+  "rational disagreement: permissivism": [
+    "Accept: permissivism",
+    "Lean towards: permissivism",
+    "Neutral towards: permissivism",
+    "Lean against: permissivism",
+    "Reject: permissivism",
+    "Agnostic/undecided"
+  ],
+  "response to external-world skepticism: epistemic externalist": [
+    "Accept: epistemic externalist",
+    "Lean towards: epistemic externalist",
+    "Neutral towards: epistemic externalist",
+    "Lean against: epistemic externalist",
+    "Reject: epistemic externalist",
+    "Agnostic/undecided"
+  ],
+  "science: scientific realism": [
+    "Accept: scientific realism",
+    "Lean towards: scientific realism",
+    "Neutral towards: scientific realism",
+    "Lean against: scientific realism",
+    "Reject: scientific realism",
+    "Agnostic/undecided"
+  ],
+  "semantic content: moderate contextualism": [
+    "Accept: moderate contextualism",
+    "Lean towards: moderate contextualism",
+    "Neutral towards: moderate contextualism",
+    "Lean against: moderate contextualism",
+    "Reject: moderate contextualism",
+    "Agnostic/undecided"
+  ],
+  "sleeping beauty: one-half": [
+    "Accept: one-half",
+    "Lean towards: one-half",
+    "Neutral towards: one-half",
+    "Lean against: one-half",
+    "Reject: one-half",
+    "Agnostic/undecided"
+  ],
+  "spacetime: substantivalism": [
+    "Accept: substantivalism",
+    "Lean towards: substantivalism",
+    "Neutral towards: substantivalism",
+    "Lean against: substantivalism",
+    "Reject: substantivalism",
+    "Agnostic/undecided"
+  ],
+  "statue and lump: one thing": [
+    "Accept: one thing",
+    "Lean towards: one thing",
+    "Neutral towards: one thing",
+    "Lean against: one thing",
+    "Reject: one thing",
+    "Agnostic/undecided"
+  ],
+  "teletransporter: survival": [
+    "Accept: survival",
+    "Lean towards: survival",
+    "Neutral towards: survival",
+    "Lean against: survival",
+    "Reject: survival",
+    "Agnostic/undecided"
+  ],
+  "temporal ontology: eternalism": [
+    "Accept: eternalism",
+    "Lean towards: eternalism",
+    "Neutral towards: eternalism",
+    "Lean against: eternalism",
+    "Reject: eternalism",
+    "Agnostic/undecided"
+  ],
+  "theory of reference: causal": [
+    "Accept: causal",
+    "Lean towards: causal",
+    "Neutral towards: causal",
+    "Lean against: causal",
+    "Reject: causal",
+    "Agnostic/undecided"
+  ],
+  "time travel: metaphysically possible": [
+    "Accept: metaphysically possible",
+    "Lean towards: metaphysically possible",
+    "Neutral towards: metaphysically possible",
+    "Lean against: metaphysically possible",
+    "Reject: metaphysically possible",
+    "Agnostic/undecided"
+  ],
+  "time: B-theory": [
+    "Accept: B-theory",
+    "Lean towards: B-theory",
+    "Neutral towards: B-theory",
+    "Lean against: B-theory",
+    "Reject: B-theory",
+    "Agnostic/undecided"
+  ],
+  "trolley problem: switch": [
+    "Accept: switch",
+    "Lean towards: switch",
+    "Neutral towards: switch",
+    "Lean against: switch",
+    "Reject: switch",
+    "Agnostic/undecided"
+  ],
+  "true contradictions: possible but non-actual": [
+    "Accept: possible but non-actual",
+    "Lean towards: possible but non-actual",
+    "Neutral towards: possible but non-actual",
+    "Lean against: possible but non-actual",
+    "Reject: possible but non-actual",
+    "Agnostic/undecided"
+  ],
+  "truth: correspondence": [
+    "Accept: correspondence",
+    "Lean towards: correspondence",
+    "Neutral towards: correspondence",
+    "Lean against: correspondence",
+    "Reject: correspondence",
+    "Agnostic/undecided"
+  ],
+  "units of selection: organisms": [
+    "Accept: organisms",
+    "Lean towards: organisms",
+    "Neutral towards: organisms",
+    "Lean against: organisms",
+    "Reject: organisms",
+    "Agnostic/undecided"
+  ],
+  "vagueness: semantic": [
+    "Accept: semantic",
+    "Lean towards: semantic",
+    "Neutral towards: semantic",
+    "Lean against: semantic",
+    "Reject: semantic",
+    "Agnostic/undecided"
+  ],
+  "values in science: can be either": [
+    "Accept: can be either",
+    "Lean towards: can be either",
+    "Neutral towards: can be either",
+    "Lean against: can be either",
+    "Reject: can be either",
+    "Agnostic/undecided"
+  ],
+  "well-being: hedonism/experientialism": [
+    "Accept: hedonism/experientialism",
+    "Lean towards: hedonism/experientialism",
+    "Neutral towards: hedonism/experientialism",
+    "Lean against: hedonism/experientialism",
+    "Reject: hedonism/experientialism",
+    "Agnostic/undecided"
+  ],
+  "wittgenstein: late": [
+    "Accept: late",
+    "Lean towards: late",
+    "Neutral towards: late",
+    "Lean against: late",
+    "Reject: late",
+    "Agnostic/undecided"
+  ],
+  "zombies: conceivable but not metaphysically possible": [
+    "Accept: conceivable but not metaphysically possible",
+    "Lean towards: conceivable but not metaphysically possible",
+    "Neutral towards: conceivable but not metaphysically possible",
+    "Lean against: conceivable but not metaphysically possible",
+    "Reject: conceivable but not metaphysically possible",
+    "Agnostic/undecided"
+  ]
+}
