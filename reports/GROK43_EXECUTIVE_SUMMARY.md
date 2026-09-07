@@ -1,16 +1,15 @@
 # Silicon Philosophers — Grok 4.3 Executive Summary
 
-**Scope:** Full demographic silicon-sampling grid (277 philosophers × 100 questions) for **Grok 4.3** via OpenRouter, compared to paper baselines using **paper §3.2 metrics only**.
+**Scope:** Full **demographic** silicon-sampling grid (277 philosophers × 100 questions) for **Grok 4.3** via OpenRouter, compared to paper baselines using **paper §3.2 metrics only**.
+
+**Excluded:** Name-only ablation runs (ignored for this report).
 
 **Not used:** Pipeline-internal `quality_score` / `quality_score_5a` (not a paper metric).
 
-**Grok 4.6:** Skipped (no OpenRouter `:batch` endpoint; mandatory reasoning made a full-grid rerun cost-prohibitive). Results below are **Grok 4.3 only**.
-
-## Setup notes
+## Setup
 - Prompts match `3_model_eval.py` (AOS / AOI / PhD / institution).
 - Human survey answers stripped from prompts; private demographics file not committed.
-- Grok 4.3 run: reasoning disabled (paper-comparable commercial setting), temperature 0.
-- Name-only ablation included for sensitivity.
+- Reasoning disabled (paper-comparable commercial setting), temperature 0.
 
 ## Table A — Per-question variance (paper Figure 1 style)
 
@@ -24,12 +23,11 @@
 | Llama 3.1 8B (FT) | 0.0207 | 3.44× |
 | GPT-4o | 0.0198 | 3.59× |
 | GPT-5.1 | 0.0197 | 3.62× |
-| **Grok 4.3 (demographics)** | **0.0160** | **4.45×** |
-| **Grok 4.3 (name-only)** | **0.0095** | **7.49×** |
+| **Grok 4.3** | **0.0160** | **4.45×** |
 
 Higher Per-Q Var = more persona differentiation (closer to humans on silicon-sampling diversity).
 
-## Table B — Paper §3.2 metrics (extended)
+## Table B — Paper §3.2 metrics
 
 | Model | Per-Q Var ↑ | Entropy ↑ | Zero-var % ↓ | JS ↓ | KL ↓ | Mantel r ↑ | RV ↑ |
 |------|-------------|-----------|--------------|------|------|------------|------|
@@ -41,13 +39,12 @@ Higher Per-Q Var = more persona differentiation (closer to humans on silicon-sam
 | Llama 3.1 8B (FT) | 0.0207 | 0.736 | 5.1 | 0.241 | 6.12 | 0.133 | 0.413 |
 | GPT-4o | 0.0198 | 0.590 | 10.5 | 0.207 | 6.03 | 0.153 | 0.448 |
 | GPT-5.1 | 0.0197 | 0.590 | 7.4 | 0.207 | 6.03 | 0.134 | 0.444 |
-| **Grok 4.3 (demographics)** | **0.0160** | **0.710** | **11.0** | **0.251** | **6.62** | **0.184** | **0.475** |
-| **Grok 4.3 (name-only)** | **0.0095** | **0.390** | **31.0** | **0.235** | **9.74** | **0.044** | **0.500** |
+| **Grok 4.3** | **0.0160** | **0.710** | **11.0** | **0.251** | **6.62** | **0.184** | **0.475** |
 
-## Table C — Grok 4.3 (demographics) vs GPT-5.1
+## Table C — Grok 4.3 vs GPT-5.1
 
-| Metric | Grok 4.3 (demo) | GPT-5.1 | Verdict |
-|--------|-----------------|---------|---------|
+| Metric | Grok 4.3 | GPT-5.1 | Verdict |
+|--------|----------|---------|---------|
 | Per-Q Var ↑ | 0.0160 | 0.0197 | Grok worse |
 | Var Ratio ↓ | 4.45 | 3.62 | Grok worse |
 | Entropy ↑ | 0.710 | 0.590 | Grok better |
@@ -58,13 +55,11 @@ Higher Per-Q Var = more persona differentiation (closer to humans on silicon-sam
 | RV ↑ | 0.475 | 0.444 | Grok better |
 
 ## Takeaways
-1. **Prompting is correct** — same demographic template as the paper; low diversity is not a prompt bug.
-2. **On diversity (Per-Q Var), Grok 4.3 underperforms GPT-5.1** (0.016 vs 0.020) and is far below Claude/Human.
-3. **Demographics help vs name-only** (0.016 vs 0.0095) but do not close the GPT-5.1 gap.
-4. **Corr-structure Mantel/RV vs humans are relatively strong** for Grok 4.3 demographics (better than GPT-5.1).
-5. **Distributional match (JS/KL) is weaker than GPT-5.1/Claude.**
+1. **Prompting matches the paper demographic template** — low diversity is not a prompt bug.
+2. **On Per-Q Var, Grok 4.3 underperforms GPT-5.1** (0.016 vs 0.020) and is well below Claude/Human.
+3. **Corr-structure Mantel/RV vs humans are relatively strong** (better than GPT-5.1).
+4. **Distributional match (JS/KL) is weaker than GPT-5.1/Claude.**
 
 ## Files
-- Metrics: `eval_results_grok43/paper_metrics_comparison.csv`
-- Paper site table update: `silicon-philosophers-paper/assets/figure1_stats_bc.csv` (Grok 4.3 row added)
-
+- `eval_results_grok43/paper_metrics_comparison.csv`
+- Paper site: `silicon-philosophers-paper/assets/figure1_stats_bc.csv`

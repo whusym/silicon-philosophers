@@ -1,21 +1,7 @@
 {
-  "metric_framing": "Only paper-facing metrics from \u00a73.2 / paper assets. quality_score_5a is pipeline-internal and excluded from headlines.",
-  "columns": {
-    "mean_per_q_variance": "Per-Q Var (higher closer to human diversity)",
-    "var_ratio_vs_human": "Human Var / Model Var (paper Var Ratio; lower better)",
-    "avg_entropy": "Shannon entropy",
-    "pct_nonzero_variance": "% questions with nonzero variance",
-    "pct_zero_var": "% zero-variance questions",
-    "avg_kl_human_to_model": "KL(human||model) over answer categories",
-    "avg_js": "Jensen\u2013Shannon vs human",
-    "mantel_r_vs_human": "Mantel r of Q\u00d7Q corr matrices vs human",
-    "rv_vs_human": "RV coefficient vs human corr structure",
-    "mean_abs_r": "Element-wise mean |r| of model Q\u00d7Q corr structure",
-    "pearson_r": "OPTIONAL secondary: cell Pearson vs Human vectors (not paper table)",
-    "mae": "OPTIONAL secondary: cell MAE vs Human (not paper table)"
-  },
   "models": {
     "Human": {
+      "model": "Human",
       "mean_per_q_variance": 0.07112216391837375,
       "var_ratio_vs_human": 1.0000000000000002,
       "avg_entropy": 1.08903509087556,
@@ -30,6 +16,7 @@
       "mae": 0.0
     },
     "GPT-5.1": {
+      "model": "GPT-5.1",
       "mean_per_q_variance": 0.019650669236909953,
       "var_ratio_vs_human": 3.6193252789978594,
       "avg_entropy": 0.5899463539882304,
@@ -44,6 +31,7 @@
       "mae": 0.2631160425335182
     },
     "Claude Sonnet 4.5": {
+      "model": "Claude Sonnet 4.5",
       "mean_per_q_variance": 0.03995413052946319,
       "var_ratio_vs_human": 1.7800953987955381,
       "avg_entropy": 0.7658221649493618,
@@ -58,6 +46,7 @@
       "mae": 0.22196819954870647
     },
     "GPT-4o": {
+      "model": "GPT-4o",
       "mean_per_q_variance": 0.01979618497909284,
       "var_ratio_vs_human": 3.5927207183347374,
       "avg_entropy": 0.5900076589329424,
@@ -72,6 +61,7 @@
       "mae": 0.26267284087548065
     },
     "Llama 3.1 8B": {
+      "model": "Llama 3.1 8B",
       "mean_per_q_variance": 0.02553647300165039,
       "var_ratio_vs_human": 2.785120870598584,
       "avg_entropy": 0.6112960741472988,
@@ -86,6 +76,7 @@
       "mae": 0.29665155371725527
     },
     "Llama 3.1 8B (FT)": {
+      "model": "Llama 3.1 8B (FT)",
       "mean_per_q_variance": 0.020702321444357845,
       "var_ratio_vs_human": 3.435468051712491,
       "avg_entropy": 0.7364425427913461,
@@ -100,6 +91,7 @@
       "mae": 0.28980628530270286
     },
     "Mistral 7B": {
+      "model": "Mistral 7B",
       "mean_per_q_variance": 0.02780270262071823,
       "var_ratio_vs_human": 2.558102530125054,
       "avg_entropy": 0.6641049939724913,
@@ -114,6 +106,7 @@
       "mae": 0.3429963703342543
     },
     "Qwen 3 4B": {
+      "model": "Qwen 3 4B",
       "mean_per_q_variance": 0.027623352893261503,
       "var_ratio_vs_human": 2.5747114839098137,
       "avg_entropy": 0.4784216524319115,
@@ -127,7 +120,8 @@
       "pearson_r": 0.20197118434573094,
       "mae": 0.2785364502871135
     },
-    "Grok 4.3 (demographics)": {
+    "Grok 4.3": {
+      "model": "Grok 4.3",
       "mean_per_q_variance": 0.01597726364015799,
       "var_ratio_vs_human": 4.4514608709098376,
       "avg_entropy": 0.7095551338636468,
@@ -140,21 +134,7 @@
       "mean_abs_r": 0.11839295594108647,
       "pearson_r": 0.3198028796057792,
       "mae": 0.2505614483074707
-    },
-    "Grok 4.3 (name-only)": {
-      "mean_per_q_variance": 0.00949212090966962,
-      "var_ratio_vs_human": 7.492757898387245,
-      "avg_entropy": 0.3895949575762076,
-      "pct_nonzero_variance": 69.0,
-      "pct_zero_var": 31.0,
-      "avg_kl_human_to_model": 9.74049502529117,
-      "avg_js": 0.23478701022729415,
-      "mantel_r_vs_human": 0.04375524848944176,
-      "rv_vs_human": 0.5002054839592451,
-      "mean_abs_r": 0.09685651787947361,
-      "pearson_r": 0.33919068013301606,
-      "mae": 0.23855331110675293
     }
   },
-  "domain_variance": "Paper domain_heterogeneity_comparison.csv covers baselines only (no Grok columns); per-question domain labels not in questions_data.json, so Grok domain variance was not recomputed."
+  "note": "Demographics Grok 4.3 only; name-only excluded"
 }
